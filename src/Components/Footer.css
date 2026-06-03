@@ -1,0 +1,105 @@
+.footer {
+  background: #fff;
+  color: #111;
+  padding: 4rem 3rem 0;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+/* GRID */
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 3rem;
+  max-width: 1100px;
+  margin: auto;
+  padding-bottom: 3rem;
+}
+
+/* LOGO */
+.footer-logo img {
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.footer-logo p {
+  font-weight: bold;
+  color: #2f6f3e;
+}
+
+/* TITLES */
+.footer-links h3,
+.footer-contact h3,
+.footer-social h3 {
+  margin-bottom: 1rem;
+}
+
+/* LINKS */
+.footer-links a,
+.footer-contact a {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: rgba(0,0,0,0.6);
+  text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+  color: #2f6f3e;
+}
+
+/* SOCIAL SECTION CENTER FIX */
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ICONS WRAPPER */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+/* ICON BUTTON */
+.social-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: white;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* HOVER ANIMATION */
+.social-icon:hover {
+  transform: translateY(-6px) scale(1.08);
+}
+
+/* COLORS */
+.whatsapp { background: #25D366; }
+.instagram { background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7); }
+.facebook { background: #1877F2; }
+.tiktok { background: linear-gradient(45deg, #000, #25F4EE, #FE2C55); }
+
+/* GLOW */
+.whatsapp:hover { box-shadow: 0 0 25px #25D366; }
+.instagram:hover { box-shadow: 0 0 25px #ee2a7b; }
+.facebook:hover { box-shadow: 0 0 25px #1877F2; }
+.tiktok:hover { box-shadow: 0 0 25px #FE2C55; }
+
+ /* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  color: rgba(0,0,0,0.5);
+}

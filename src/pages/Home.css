@@ -1,0 +1,127 @@
+/* --- 1. تعديل ألوان الجزء العلوي (Hero Section) --- */
+.hero {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 2rem;
+  /* خليتلك الخلفية بتدرج ناعم مريح للعين */
+  background: linear-gradient(180deg, #1cc264 0%, #3bbb21 100%); 
+}
+
+.hero-tag {
+  background: #e8f5e9;
+  border: 1px solid #2e7d32;
+  color: #0bc214; /* اسم الشركة باللون الأخضر */
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* لون جملة: نحول مساحتك إلى */
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #e1e2e6; /* أخضر غامق فخم جداً ملكي */
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+/* لون كلمة: تحفة طبيعية */
+.highlight {
+  color: #050705fa; /* أخضر عشبي زاهي ومميز */
+}
+
+/* لون جملة: متخصصون في تنسيق المساحات... */
+.hero p {
+  color: #455a64; /* رمادي ويتي فخم وواضح في القراءة */
+  font-size: 1.2rem;
+  max-width: 700px;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+/* زرار: تواصل معنا على واتساب */
+.btn-primary {
+  display: inline-block;
+  background-color: #2297b4; /* خلفية الزرار أخضر */
+  color: #ffffff !important; /* كتابة بيضاء صريحة */
+  padding: 0.9rem 2.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(194, 204, 195, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1b5e20; /* يغمق سنة لما تقف عليه بالماوس */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+}
+
+
+/* --- 2. تعديل الجزء السفلي اللي فيه الكروت (Services Section) --- */
+.services-preview {
+  padding: 5rem 2rem;
+  text-align: center;
+  background: linear-gradient(180deg,  #3bbb21 100%,  #1cc264 0%); 
+}
+
+/* عنوان "خدماتنا" */
+.services-preview h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff; /* خليت العنوان بالأبيض عشان ينطق فوق الأخضر */
+  margin-bottom: 3.5rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ستايل الكروت جوه الخلفية الخضراء */
+.service-card {
+  background: #ffffff; /* الكروت تفضل بيضاء عشان تنطق وتظهر فخامتها */
+  border-radius: 16px;
+  padding: 2.5rem 1.5rem;
+  text-decoration: none;
+  color: #1a202c;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  background: #f1f8e9; /* يقلب أخضر خفيف جداً وناعم عند الوقوف عليه */
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.service-card h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1b5e20; /* عنوان الخدمة أخضر غامق */
+  margin-bottom: 0.8rem;
+}
+
+.service-card p {
+  color: #558b2f; /* تفاصيل الخدمة أخضر هادي */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
