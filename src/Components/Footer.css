@@ -1,105 +1,131 @@
 .footer {
-  background: #fff;
-  color: #111;
-  padding: 4rem 3rem 0;
-  margin-top: 4rem;
-  border-top: 1px solid rgba(0,0,0,0.08);
+  margin-top: auto;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  color: rgba(255, 255, 255, 0.85);
 }
 
-/* GRID */
+.footer-top {
+  padding: 3rem 1.25rem 2rem;
+}
+
 .footer-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 3rem;
-  max-width: 1100px;
-  margin: auto;
-  padding-bottom: 3rem;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
-/* LOGO */
-.footer-logo img {
-  height: 60px;
-  margin-bottom: 10px;
+@media (min-width: 640px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.footer-logo p {
-  font-weight: bold;
-  color: #2f6f3e;
+@media (min-width: 960px) {
+  .footer-top {
+    padding: 4rem 2rem 2.5rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: 2rem;
+  }
 }
 
-/* TITLES */
-.footer-links h3,
-.footer-contact h3,
-.footer-social h3 {
+.footer-brand img {
+  height: 52px;
   margin-bottom: 1rem;
+  border-radius: 8px;
 }
 
-/* LINKS */
-.footer-links a,
-.footer-contact a {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: rgba(0,0,0,0.6);
-  text-decoration: none;
+.footer-brand h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 0.75rem;
 }
 
-.footer-links a:hover,
-.footer-contact a:hover {
-  color: #2f6f3e;
+.footer-brand p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 280px;
 }
 
-/* SOCIAL SECTION CENTER FIX */
-.footer-social {
+.footer-col h4 {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.footer-nav {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 0.55rem;
 }
 
-/* ICONS WRAPPER */
-.social-icons {
+.footer-nav a,
+.footer-contact-item {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 1.2rem;
-  margin-top: 1rem;
-  width: 100%;
+  gap: 0.5rem;
 }
 
-/* ICON BUTTON */
-.social-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  color: white;
-  transition: 0.3s ease;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+.footer-nav a:hover,
+.footer-contact-item:hover {
+  color: var(--accent, #c9a227);
 }
 
-/* HOVER ANIMATION */
-.social-icon:hover {
-  transform: translateY(-6px) scale(1.08);
-}
-
-/* COLORS */
-.whatsapp { background: #25D366; }
-.instagram { background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7); }
-.facebook { background: #1877F2; }
-.tiktok { background: linear-gradient(45deg, #000, #25F4EE, #FE2C55); }
-
-/* GLOW */
-.whatsapp:hover { box-shadow: 0 0 25px #25D366; }
-.instagram:hover { box-shadow: 0 0 25px #ee2a7b; }
-.facebook:hover { box-shadow: 0 0 25px #1877F2; }
-.tiktok:hover { box-shadow: 0 0 25px #FE2C55; }
-
- /* BOTTOM */
-.footer-bottom {
-  text-align: center;
-  padding: 1.5rem;
+.footer-contact-item svg {
+  flex-shrink: 0;
+  opacity: 0.8;
   font-size: 0.85rem;
-  color: rgba(0,0,0,0.5);
+}
+
+.footer-contact-col .footer-contact-item {
+  margin-bottom: 0.5rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.15rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+  color: white;
+}
+
+.social-btn.whatsapp { background: #25d366; }
+.social-btn.instagram { background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7); }
+.social-btn.facebook { background: #1877f2; }
+.social-btn.tiktok { background: #010101; border: 1px solid rgba(255,255,255,0.15); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  padding: 1.25rem 1rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
 }

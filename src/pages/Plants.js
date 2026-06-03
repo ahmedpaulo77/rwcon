@@ -1,29 +1,32 @@
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import PageHero from '../Components/PageHero';
+import WhatsAppFab from '../Components/WhatsAppFab';
 import plant1 from '../images/plant1.jpg';
 import plant2 from '../images/plant2.jpg';
 import './ServicePage.css';
 
 const products = [
-  { id: 1, name: "دراسينا مانسجيانا", price: 140, img: plant1 },
-  { id: 2, name: "جلد النمر", price: 50, img: plant2 },
-  { id: 3, name: "فيكس ايلاستيكا", price: 90, img: plant1 },
-  { id: 4, name: "يوكا ثلاثية", price: 210, img: plant2 },
-  { id: 5, name: "فيكس بونساي", price: 180, img: plant1 },
-  { id: 6, name: "باكيرا", price: 250, img: plant2 },
+  { id: 1, name: 'دراسينا مانسجيانا', price: 140, img: plant1 },
+  { id: 2, name: 'جلد النمر', price: 50, img: plant2 },
+  { id: 3, name: 'فيكس ايلاستيكا', price: 90, img: plant1 },
+  { id: 4, name: 'يوكا ثلاثية', price: 210, img: plant2 },
+  { id: 5, name: 'فيكس بونساي', price: 180, img: plant1 },
+  { id: 6, name: 'باكيرا', price: 250, img: plant2 },
 ];
 
 function Plants() {
   return (
-    <div style={{background: '#eef5e8'}}>
+    <div className="page page--plants">
       <Navbar />
-      <section className="service-section">
-        <p className="section-label">خدماتنا</p>
-        <h1>المزروعات والأواني</h1>
-        <p className="service-desc">مجموعة متميزة من النباتات الطبيعية والأواني العصرية</p>
+      <PageHero
+        title="المزروعات والأواني"
+        description="مجموعة متميزة من النباتات الطبيعية والأواني العصرية"
+      />
+      <main className="page-content service-section">
         <div className="products-grid">
           {products.map((product) => (
-            <div className="product-card" key={product.id}>
+            <article className="product-card" key={product.id}>
               <img src={product.img} alt={product.name} className="product-img" />
               <div className="product-info">
                 <h3>{product.name}</h3>
@@ -32,11 +35,12 @@ function Plants() {
                   اطلب الآن
                 </a>
               </div>
-            </div>
+            </article>
           ))}
         </div>
-      </section>
+      </main>
       <Footer />
+      <WhatsAppFab />
     </div>
   );
 }

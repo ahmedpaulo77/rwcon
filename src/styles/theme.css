@@ -1,0 +1,160 @@
+:root {
+  --font: 'Cairo', system-ui, sans-serif;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 16px 48px rgba(15, 23, 42, 0.14);
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --white: #ffffff;
+  --surface: #ffffff;
+  --border: rgba(15, 23, 42, 0.08);
+  --whatsapp: #25d366;
+  --nav-height: 72px;
+}
+
+/* الرئيسية */
+.page--home {
+  --accent: #c9a227;
+  --accent-soft: rgba(201, 162, 39, 0.15);
+  --accent-dark: #1b4332;
+  --page-bg: #faf8f5;
+  --hero-bg: linear-gradient(145deg, #0a1f14 0%, #1b4332 45%, #2d6a4f 100%);
+}
+
+/* المسابح */
+.page--pools {
+  --accent: #0284c7;
+  --accent-soft: rgba(2, 132, 199, 0.12);
+  --accent-dark: #0c4a6e;
+  --page-bg: #f0f9ff;
+  --hero-bg: linear-gradient(145deg, #0c4a6e 0%, #0369a1 50%, #0ea5e9 100%);
+}
+
+/* النوافير */
+.page--fountains {
+  --accent: #0d9488;
+  --accent-soft: rgba(13, 148, 136, 0.12);
+  --accent-dark: #115e59;
+  --page-bg: #ecfeff;
+  --hero-bg: linear-gradient(145deg, #134e4a 0%, #0d9488 50%, #2dd4bf 100%);
+}
+
+/* اللاندسكيب */
+.page--landscape {
+  --accent: #6b8f4e;
+  --accent-soft: rgba(107, 143, 78, 0.14);
+  --accent-dark: #3d5a3e;
+  --page-bg: #f7f4ef;
+  --hero-bg: linear-gradient(145deg, #2d3a2a 0%, #4a6741 50%, #8fbc6a 100%);
+}
+
+/* المزروعات */
+.page--plants {
+  --accent: #4a7c59;
+  --accent-soft: rgba(74, 124, 89, 0.14);
+  --accent-dark: #2d5016;
+  --page-bg: #f1f8f0;
+  --hero-bg: linear-gradient(145deg, #1a3d1f 0%, #4a7c59 50%, #7cb87a 100%);
+}
+
+/* ماجيك */
+.page--magic {
+  --accent: #d97706;
+  --accent-soft: rgba(217, 119, 6, 0.14);
+  --accent-dark: #92400e;
+  --page-bg: #fffbeb;
+  --hero-bg: linear-gradient(145deg, #1c1917 0%, #78350f 50%, #d97706 100%);
+}
+
+/* من نحن */
+.page--about {
+  --accent: #475569;
+  --accent-soft: rgba(71, 85, 105, 0.12);
+  --accent-dark: #1e293b;
+  --page-bg: #f8fafc;
+  --hero-bg: linear-gradient(145deg, #1e293b 0%, #475569 50%, #94a3b8 100%);
+}
+
+/* تواصل */
+.page--contact {
+  --accent: #1b4332;
+  --accent-soft: rgba(27, 67, 50, 0.12);
+  --accent-dark: #0f2419;
+  --page-bg: #f0fdf4;
+  --hero-bg: linear-gradient(145deg, #0f2419 0%, #1b4332 50%, #40916c 100%);
+}
+
+.page {
+  min-height: 100vh;
+  background: var(--page-bg);
+  color: var(--text);
+}
+
+.page-content {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+@media (min-width: 768px) {
+  .page-content {
+    padding: 3rem 2rem 5rem;
+  }
+}
+
+/* أزرار مشتركة */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--accent-dark);
+  color: var(--white) !important;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-order {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-dark);
+  color: var(--white) !important;
+  padding: 0.55rem 1.35rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-order:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+.section-label {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+  padding: 0.35rem 1rem;
+  background: var(--accent-soft);
+  border-radius: 50px;
+}

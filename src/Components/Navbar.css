@@ -1,66 +1,325 @@
+.navbar-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 4rem;
-  background: var(--white);
-  z-index: 100;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  justify-content: space-between;
+  height: var(--nav-height, 70px);
+  padding: 0 1.25rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border, #e2e8f0);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  z-index: 120; /* عشان اللوجو يفضل فوق الأوفرلاي */
 }
 
 .nav-logo {
-  height: 60px;
+  height: 48px;
+  width: auto;
   object-fit: contain;
 }
 
-.nav-links {
+/* زرار القائمة الثلاث شرط الدائري الفخم */
+.nav-toggle {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: #e8f5e9; /* خلفية خضراء هادية متناسقة مع الهيروه */
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 120; /* لضمان ظهوره فوق الشاشة الخضراء */
+  transition: background 0.3s ease;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 20px;
+  background: #1b5e20; /* لون الشرط أخضر غامق */
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s, background 0.25s;
+}
+
+/* عند فتح القائمة الشرط تقلب شكل X ولونها أبيض عشان الخلفية هتبقى غامقة */
+.nav-toggle.is-open {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-toggle.is-open span {
+  background: #ffffff;
+}
+
+.nav-toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-overlay {
+  display: none;
+}
+
+.nav-panel {
+  display: none;
 }
 
 .nav-links a,
-.nav-link {
-  color: var(--text);
+.nav-dropdown-btn {
+  color: #1a202c;
   text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: 700;
-  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
   transition: color 0.2s;
 }
 
 .nav-links a:hover,
-.nav-link:hover,
-.nav-links a.active {
-  color: var(--green);
+.nav-links a.active,
+.nav-dropdown-btn:hover {
+  color: #2e7d32;
 }
 
-.dropdown {
+.nav-dropdown {
   position: relative;
 }
 
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: var(--white);
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  padding: 0.5rem 0;
-  min-width: 180px;
-  z-index: 200;
+.nav-dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
 }
 
-.dropdown-menu a {
-  display: block;
-  padding: 0.75rem 1.5rem;
-  color: var(--text);
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: background 0.2s;
+.nav-chevron {
+  font-size: 0.7rem;
+  transition: transform 0.2s;
 }
 
-.dropdown-menu a:hover {
-  background: #f5f5f5;
-  color: var(--green);
+.nav-dropdown-btn.open .nav-chevron {
+  transform: rotate(180deg);
 }
+
+.nav-dropdown-menu {
+  display: none;
+}
+
+.nav-cta {
+  background: #2e7d32 !important;
+  color: #ffffff !important;
+  padding: 0.55rem 1.15rem !important;
+  border-radius: 10px;
+}
+
+.nav-cta:hover,
+.nav-cta.active {
+  background: #1b5e20 !important;
+  color: #ffffff !important;
+}
+
+/* --- ستايل الشاشات الكبيرة (Desktop) يفضل ثابت وفخم --- */
+@media (min-width: 900px) {
+  .navbar {
+    padding: 0 2.5rem;
+  }
+
+  .nav-logo {
+    height: 52px;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-panel {
+    display: block;
+    position: static;
+    background: none;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .nav-dropdown-menu {
+    display: block;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 220px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid #e2e8f0;
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-dropdown-menu a {
+    display: block;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .nav-dropdown-menu a:hover {
+    background: #f1f8e9;
+    color: #2e7d32;
+  }
+
+  .nav-dropdown-btn .nav-chevron {
+    display: inline;
+  }
+
+  .nav-dropdown-btn.open .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* --- التحول السحري للموبايل (Premium Full-Screen Overlay) --- */
+@media (max-width: 899px) {
+  .nav-panel.open {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* توسيط الروابط في نص الشاشة تماماً */
+    align-items: center;
+    position: fixed;
+    inset: 0; /* تاخد الشاشة كاملة من فوق لتحت */
+    background: linear-gradient(135deg, rgba(27, 94, 32, 0.96) 0%, rgba(46, 125, 50, 0.98) 100%); /* خلفية خضراء ملكية معتمة */
+    backdrop-filter: blur(20px); /* تأثير ضبابي خارق الفخامة */
+    -webkit-backdrop-filter: blur(20px);
+    padding: 2rem;
+    overflow-y: auto;
+    z-index: 115;
+    animation: fadeInOverlay 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes fadeInOverlay {
+    from {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* ستايل اللينكات جوه الشاشة الخضراء */
+  .nav-links > a,
+  .nav-dropdown-btn {
+    color: #faf9f6 !important; /* لون أبيض عاجي ناعم جداً */
+    font-size: 1.5rem; /* خط كبير وواضح ومودرن */
+    font-weight: 700;
+    padding: 0.5rem 0;
+    border-bottom: none; /* شيلنا الخطوط التقليدية المشرطة */
+    text-align: center;
+    width: 100%;
+    transition: transform 0.2s, color 0.2s;
+  }
+
+  .nav-links > a:hover,
+  .nav-links > a.active,
+  .nav-dropdown-btn:hover {
+    color: #ffca28 !important; /* تقلب ذهبي هادي عند الضغط أو التفعيل */
+    transform: scale(1.05);
+  }
+
+  /* زرار خدماتنا في الموبايل */
+  .nav-dropdown-btn {
+    justify-content: center;
+  }
+
+  /* قائمة الخدمات المنسدلة جوه الأوفرلاي */
+  .nav-dropdown-menu.open {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background: rgba(255, 255, 255, 0.08); /* بوكس شفاف خفيف جداً يلم الخدمات */
+    padding: 1rem 2rem;
+    border-radius: 14px;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+
+  .nav-dropdown-menu a {
+    color: #e8f5e9 !important; /* أخضر فاتح مريح */
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .nav-dropdown-menu a.active,
+  .nav-dropdown-menu a:hover {
+    color: #ffca28 !important;
+  }
+
+  /* زرار اتصل بنا في الموبايل يتحول لـ كارت عريض فخم أسفل اللينكات */
+  .nav-cta {
+    margin-top: 2rem;
+    background: #ffffff !important; /* يقلب أبيض ناصع عشان يكسر لون الشاشة الغامق */
+    color: #1b5e20 !important; /* الكتابة جواه باللون الأخضر الغامق */
+    width: 100%;
+    padding: 0.9rem 0 !important;
+    font-size: 1.2rem !important;
+    font-weight: 700;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .nav-cta:hover {
+    background: #ffca28 !important;
+    color: #1b5e20 !important;
+  }
+} 

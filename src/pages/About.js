@@ -1,18 +1,19 @@
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import PageHero from '../Components/PageHero';
+import WhatsAppFab from '../Components/WhatsAppFab';
 import './About.css';
 
 function About() {
   return (
-    <div>
+    <div className="page page--about">
       <Navbar />
-      <section className="about-section">
-        <p className="section-label">من نحن</p>
-        <h1>شركة روكن للمقاولات</h1>
-        <p className="about-desc">
-          شركة متخصصة في تنسيق المساحات الخضراء وتوريد النباتات الطبيعية،
-          تأسست بهدف تقديم حلول نباتية متكاملة تحول كل مساحة إلى بيئة حيوية جميلة.
-        </p>
+      <PageHero
+        label="من نحن"
+        title="شركة روكن للمقاولات"
+        description="متخصصون في تنسيق المساحات الخضراء وتقديم حلول نباتية متكاملة تحول كل مساحة إلى بيئة حيوية جميلة"
+      />
+      <main className="page-content about-main">
         <div className="stats-grid">
           <div className="stat-card">
             <h2>+50</h2>
@@ -23,30 +24,35 @@ function About() {
             <p>عميل راضٍ</p>
           </div>
           <div className="stat-card">
-            <h2>45%</h2>
-            <p>نمو في الإيرادات</p>
+            <h2>5</h2>
+            <p>مجالات خدمة</p>
           </div>
         </div>
         <div className="values-grid">
           <div className="value-card">
-            <h3>🏆 الجودة</h3>
+            <span className="value-icon">🏆</span>
+            <h3>الجودة</h3>
             <p>نلتزم بأعلى معايير الجودة في كل مشروع</p>
           </div>
           <div className="value-card">
-            <h3>⏰ الالتزام</h3>
+            <span className="value-icon">⏰</span>
+            <h3>الالتزام</h3>
             <p>نسلم مشاريعنا في الوقت المحدد دائماً</p>
           </div>
           <div className="value-card">
-            <h3>💡 الابتكار</h3>
-            <p>نستخدم أحدث تقنيات التصميم</p>
+            <span className="value-icon">💡</span>
+            <h3>الابتكار</h3>
+            <p>نستخدم أحدث تقنيات التصميم والتنفيذ</p>
           </div>
           <div className="value-card">
-            <h3>🤝 الثقة</h3>
+            <span className="value-icon">🤝</span>
+            <h3>الثقة</h3>
             <p>علاقات طويلة الأمد مع عملائنا</p>
           </div>
         </div>
-      </section>
+      </main>
       <Footer />
+      <WhatsAppFab />
     </div>
   );
 }

@@ -1,62 +1,73 @@
-.magic-page {
-  direction: rtl;
-  text-align: center;
-}
-
 .magic-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
-  max-width: 1100px;
-  margin: 0 auto 4rem;
-  padding: 0 2rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 560px) {
+  .magic-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .magic-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 .magic-card {
-  background: #ffffff;
-  border-radius: 20px;
+  background: var(--white);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #e2e8f0;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .magic-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
-/* التعديل الأهم: تحجيم الصورة عشان متطلعش ضخمة */
 .magic-img-container {
   width: 100%;
-  height: 260px; /* طول الكارت الثابت */
+  height: 220px;
   overflow: hidden;
 }
 
 .magic-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* بيخلي الصورة تملى الفراغ من غير ما تمط أو تبوظ */
-  transition: transform 0.5s ease;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
 .magic-card:hover .magic-img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .magic-details {
-  padding: 2rem;
+  padding: 1.35rem;
+  text-align: right;
 }
 
 .magic-details h3 {
-  font-size: 1.3rem;
+  font-size: 1.05rem;
+  font-weight: 800;
   margin-bottom: 0.5rem;
-  color: #1a202c;
+  color: var(--text);
 }
 
 .magic-price {
-  color: #e65100;
-  font-size: 1.5rem;
+  color: var(--accent);
+  font-size: 1.3rem;
   font-weight: 800;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.magic-details .btn-order {
+  width: 100%;
+  justify-content: center;
 }
