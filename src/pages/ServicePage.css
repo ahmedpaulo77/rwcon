@@ -90,3 +90,43 @@
   width: 100%;
   text-align: center;
 }
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  gap: 0.65rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.35rem;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-btn--active {
+  background: var(--accent-dark);
+  color: var(--white);
+  border-color: var(--accent-dark);
+}
+
+/* السعر عند التواصل */
+.price-inquiry {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+}

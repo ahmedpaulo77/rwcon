@@ -59,32 +59,45 @@
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  text-align: right;
+  padding: 2rem 1.5rem;
+  text-align: center;
   box-shadow: var(--shadow);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s ease;
 }
 
 .value-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
 }
 
 .value-icon {
-  font-size: 1.75rem;
-  display: block;
-  margin-bottom: 0.75rem;
+  width: 80px;
+  height: 80px;
+  background: rgba(200, 161, 47, 0.1);
+  color: #c8a12f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+}
+
+.value-card:hover .value-icon {
+  transform: scale(1.1);
+  background: rgba(200, 161, 47, 0.18);
 }
 
 .value-card h3 {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   color: var(--accent-dark);
 }
 
 .value-card p {
   color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.8;
 }

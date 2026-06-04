@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import WhatsAppFab from '../Components/WhatsAppFab';
+import heroImg from '../images/hero.jpg';
 import './Home.css';
 
 const SERVICES = [
@@ -37,7 +38,7 @@ const SERVICES = [
     to: '/magic',
     icon: '✨',
     title: 'ماجيك',
-    desc: 'أبجورات وإضاءة ديكورية عصرية',
+    desc: 'نباتات عائمة مغناطيسية ديكور فريد',
     theme: 'magic',
   },
 ];
@@ -47,8 +48,8 @@ function Home() {
     <div className="page page--home">
       <Navbar />
 
-      <section className="hero">
-        <div className="hero__bg" aria-hidden />
+      <section className="hero" style={{ backgroundImage: `url(${heroImg})` }}>
+        <div className="hero__overlay" aria-hidden />
         <div className="hero__content">
           <span className="hero-tag">شركة روكن للمقاولات — تبوك</span>
           <h1>
@@ -59,13 +60,9 @@ function Home() {
             متخصصون في تنسيق المساحات الخضراء، المسابح، النوافير واللاندسكيب
             في المملكة العربية السعودية
           </p>
-          <div className="hero__actions">
-            <a
-              href="https://wa.me/966592001640"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-primary btn-hero"
-            >
+         <div className="hero__actions">
+            
+              <a href="https://wa.me/966592001640" target="_blank" rel="noreferrer" className="btn-primary btn-hero">
               تواصل على واتساب
             </a>
             <Link to="/about" className="btn-secondary">
