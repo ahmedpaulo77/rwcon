@@ -70,6 +70,18 @@ function Footer() {
         </div>
       </div>
 
+      {/* ⬇️ الجزء المطور الخاص بأرقام التوثيق الحكومية ⬇️ */}
+      <div className="footer-credentials">
+        <div className="credential-item">
+          <span className="credential-label">السجل التجاري:</span>
+          <span className="credential-value">7051571565</span>
+        </div>
+        <div className="credential-item">
+          <span className="credential-label">الرقم الضريبي:</span>
+          <span className="credential-value">314211130600003</span>
+        </div>
+      </div>
+
       <div className="footer-bottom">
         <p>© 2026 RWCON — شركة روكن للمقاولات. جميع الحقوق محفوظة.</p>
       </div>
