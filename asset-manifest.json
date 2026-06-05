@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/rwcon/static/css/main.5ccd7340.css",
-    "main.js": "/rwcon/static/js/main.575c823e.js",
+    "main.css": "/rwcon/static/css/main.bff3f6af.css",
+    "main.js": "/rwcon/static/js/main.15066495.js",
     "static/media/16.png": "/rwcon/static/media/16.e0cc91b42cff4bd766c3.png",
     "static/media/17-.png": "/rwcon/static/media/17-.305dad648a53f202b135.png",
     "static/media/3.png": "/rwcon/static/media/3.c44e1ef9ee2d2783991b.png",
@@ -65,11 +65,11 @@
     "static/media/landscape2.webp": "/rwcon/static/media/landscape2.8509693422e87707e6d5.webp",
     "static/media/logo.webp": "/rwcon/static/media/logo.1cb61de9f5e58322837c.webp",
     "index.html": "/rwcon/index.html",
-    "main.5ccd7340.css.map": "/rwcon/static/css/main.5ccd7340.css.map",
-    "main.575c823e.js.map": "/rwcon/static/js/main.575c823e.js.map"
+    "main.bff3f6af.css.map": "/rwcon/static/css/main.bff3f6af.css.map",
+    "main.15066495.js.map": "/rwcon/static/js/main.15066495.js.map"
   },
   "entrypoints": [
-    "static/css/main.5ccd7340.css",
-    "static/js/main.575c823e.js"
+    "static/css/main.bff3f6af.css",
+    "static/js/main.15066495.js"
   ]
 }
