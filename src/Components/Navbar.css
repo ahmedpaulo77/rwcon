@@ -1,10 +1,8 @@
 /* ==================== 1. الستايل الأساسي والكمبيوتر (Desktop) ==================== */
 .navbar-wrap {
-  position: sticky;
-  top: 0;
+  position: relative; /* الكود الجديد: هيفضل ثابت فوق ومش هينزل مع السكرول */
   z-index: 100;
-}
-
+} 
 .navbar {
   display: flex;
   align-items: center;

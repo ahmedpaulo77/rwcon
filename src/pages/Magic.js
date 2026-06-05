@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import PageHero from '../Components/PageHero';
@@ -13,6 +14,27 @@ const magicProducts = [
 ];
 
 function Magic() {
+  // بنخزن الترتيب الرقمي للصورة المفتوحة حالياً
+  const [currentImgIndex, setCurrentImgIndex] = useState(null);
+
+  const showNextImg = (e) => {
+    e.stopPropagation();
+    if (currentImgIndex < magicProducts.length - 1) {
+      setCurrentImgIndex(currentImgIndex + 1);
+    } else {
+      setCurrentImgIndex(0);
+    }
+  };
+
+  const showPrevImg = (e) => {
+    e.stopPropagation();
+    if (currentImgIndex > 0) {
+      setCurrentImgIndex(currentImgIndex - 1);
+    } else {
+      setCurrentImgIndex(magicProducts.length - 1);
+    }
+  };
+
   return (
     <div className="page page--magic">
       <Navbar />
@@ -23,10 +45,16 @@ function Magic() {
       />
       <main className="page-content">
         <div className="magic-grid">
-          {magicProducts.map((product) => (
+          {magicProducts.map((product, index) => (
             <article className="magic-card" key={product.id}>
               <div className="magic-img-container">
-                <img src={product.image} alt={product.name} className="magic-img" />
+                <img 
+                  src={product.image} 
+                  alt={product.name} 
+                  className="magic-img magic-imgclickable" 
+                  onClick={() => setCurrentImgIndex(index)}
+                  title="اضغط لتكبير الصورة"
+                />
               </div>
               <div className="magic-details">
                 <h3>{product.name}</h3>
@@ -39,6 +67,27 @@ function Magic() {
           ))}
         </div>
       </main>
+
+      {/* نافذة التكبير السحرية بالأسهم */}
+      {currentImgIndex !== null && (
+        <div className="lightbox-overlay" onClick={() => setCurrentImgIndex(null)}>
+          <button className="lightbox-close" onClick={() => setCurrentImgIndex(null)}>&times;</button>
+          
+          <button className="lightbox-arrow lightbox-arrow--left" onClick={showPrevImg}>&#10094;</button>
+          
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <img 
+              src={magicProducts[currentImgIndex].image} 
+              alt={magicProducts[currentImgIndex].name} 
+              className="lightbox-img" 
+            />
+            <div className="lightbox-caption">{magicProducts[currentImgIndex].name}</div>
+          </div>
+          
+          <button className="lightbox-arrow lightbox-arrow--right" onClick={showNextImg}>&#10095;</button>
+        </div>
+      )}
+
       <Footer />
       <WhatsAppFab />
     </div>
@@ -46,4 +95,3 @@ function Magic() {
 }
 
 export default Magic;
-

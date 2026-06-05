@@ -42,7 +42,7 @@ import pot15 from '../images/15-.png';
 import pot16 from '../images/16-.png';
 import pot17 from '../images/17-.png';
 import pot18 from '../images/18-.png';
-import pot19 from '../images/19-.png';
+import pot19 from '../images/19-.png'; 
 import pot20 from '../images/20-.png';
 import pot21 from '../images/21-.png';
 import pot22 from '../images/22-.png';
@@ -102,7 +102,7 @@ const products = [
   { id: 33, category: 'pots', name: 'روكن ماكسي',          price: null, img: pot16 },
   { id: 34, category: 'pots', name: 'روكن كيرف',           price: null, img: pot17 },
   { id: 35, category: 'pots', name: 'روكن ليف كيوب',       price: null, img: pot18 },
-  { id: 36, category: 'pots', name: 'روكن ميني',           price: null, img: pot19 },
+  { id: 36, category: 'pots', name: 'روكن ميني',           price: pot19 }, 
   { id: 37, category: 'pots', name: 'روكن وود',            price: null, img: pot20 },
   { id: 38, category: 'pots', name: 'روكن برايل',          price: null, img: pot21 },
   { id: 39, category: 'pots', name: 'روكن بحر',            price: null, img: pot22 },
@@ -130,10 +130,32 @@ const FILTERS = [
 
 function Plants() {
   const [active, setActive] = useState('all');
+  // بنخزن الـ Index (الترتيب الرقمي) للمنتج المفتوح حالياً بدل مسار الصورة
+  const [currentImgIndex, setCurrentImgIndex] = useState(null);
 
   const filtered = active === 'all'
     ? products
     : products.filter(p => p.category === active);
+
+  // دالة للانتقال للصورة التالية
+  const showNextImg = (e) => {
+    e.stopPropagation(); // يمنع إغلاق النافذة عند الضغط على الزرار
+    if (currentImgIndex < filtered.length - 1) {
+      setCurrentImgIndex(currentImgIndex + 1);
+    } else {
+      setCurrentImgIndex(0); // يرجع لأول صورة لو وصل للآخر
+    }
+  };
+
+  // دالة للانتقال للصورة السابقة
+  const showPrevImg = (e) => {
+    e.stopPropagation();
+    if (currentImgIndex > 0) {
+      setCurrentImgIndex(currentImgIndex - 1);
+    } else {
+      setCurrentImgIndex(filtered.length - 1); // يروح لآخر صورة لو كان في الأول
+    }
+  };
 
   return (
     <div className="page page--plants">
@@ -148,16 +170,30 @@ function Plants() {
             <button
               key={f.key}
               className={`filter-btn ${active === f.key ? 'filter-btn--active' : ''}`}
-              onClick={() => setActive(f.key)}
+              onClick={() => {
+                setActive(f.key);
+                setCurrentImgIndex(null); // تصفير الـ Slider عند تغيير الفلتر
+              }}
             >
               {f.label}
             </button>
           ))}
         </div>
         <div className="products-grid">
-          {filtered.map((product) => (
+          {filtered.map((product, index) => (
             <article className="product-card" key={product.id}>
-              <img src={product.img} alt={product.name} className="product-img" />
+              {/* عند الضغط، بنبعت الـ index بتاع الصورة في المصفوفة المفلترة */}
+              <img 
+                src={product.img} 
+                alt={product.name} 
+                className="product-imgclickable" 
+                onClick={() => setCurrentImgIndex(index)}
+                title="اضغط لتكبير الصورة"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '/logo192.png';
+                }}
+              />
               <div className="product-info">
                 <h3>{product.name}</h3>
                 {product.price
@@ -172,6 +208,30 @@ function Plants() {
           ))}
         </div>
       </main>
+
+      {/* نافذة التكبير السحرية المدعومة بأزرار التنقل يمين وشمال */}
+      {currentImgIndex !== null && (
+        <div className="lightbox-overlay" onClick={() => setCurrentImgIndex(null)}>
+          <button className="lightbox-close" onClick={() => setCurrentImgIndex(null)}>&times;</button>
+          
+          {/* زرار السهم لـ اليسار (السابق) */}
+          <button className="lightbox-arrow lightbox-arrow--left" onClick={showPrevImg}>&#10094;</button>
+          
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <img 
+              src={filtered[currentImgIndex].img} 
+              alt={filtered[currentImgIndex].name} 
+              className="lightbox-img" 
+            />
+            {/* كتابة اسم المنتج تحت الصورة جوه الصندوق لزيادة الاحترافية */}
+            <div className="lightbox-caption">{filtered[currentImgIndex].name}</div>
+          </div>
+          
+          {/* زرار السهم لـ اليمين (التالي) */}
+          <button className="lightbox-arrow lightbox-arrow--right" onClick={showNextImg}>&#10095;</button>
+        </div>
+      )}
+
       <Footer />
       <WhatsAppFab />
     </div>

@@ -40,6 +40,8 @@
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: transform 0.25s, box-shadow 0.25s;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover,
@@ -48,21 +50,32 @@
   box-shadow: var(--shadow-lg);
 }
 
-.project-img,
-.product-img {
+.project-img {
   width: 100%;
   height: 220px;
   object-fit: cover;
 }
 
 .product-img {
+  width: 100%;
   height: 200px;
+  object-fit: contain; /* يمنع قص الصور تماماً ويظهر الوعاء كاملاً */
+  background: #f8f9fa; /* خلفية مودرن ناعمة وممتازة للأواني البيضاء */
+  padding: 12px;
+  transition: background-color 0.25s ease;
+}
+
+.product-card:hover .product-img {
+  background: #f1f3f5;
 }
 
 .project-info,
 .product-info {
   padding: 1.25rem 1.35rem;
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .project-card h3,
@@ -71,6 +84,10 @@
   font-weight: 800;
   margin-bottom: 0.4rem;
   color: var(--text);
+}
+
+.product-info h3 {
+  min-height: 2.4rem; /* يوحد طول عناوين كروت المنتجات لتناسق المظهر */
 }
 
 .project-card p {
@@ -90,6 +107,7 @@
   width: 100%;
   text-align: center;
 }
+
 /* Filter Bar */
 .filter-bar {
   display: flex;
@@ -129,4 +147,171 @@
   font-size: 0.88rem;
   font-style: italic;
   margin-bottom: 1rem;
+}
+/* ستايل الماوس لما يقف على صورة المنتج عشان يعرف إنه ينفع يدوس عليها */
+.product-imgclickable {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #f8f9fa;
+  padding: 12px;
+  cursor: zoom-in; /* بيخلي شكل الماوس عدسة مكبرة شيك */
+  transition: all 0.25s ease;
+}
+
+.product-card:hover .product-imgclickable {
+  background: #f1f3f5;
+  transform: scale(1.02); /* زووم خفيف جداً عند الهوفر */
+}
+
+/* الأوفرلاي الأسود الشفاف الشاشة كاملة */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85); /* تعتيم فخم خلف الصورة */
+  backdrop-filter: blur(8px); /* تغبيش للخلفية */
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000; /* أعلى من أي حاجة في الموقع */
+  animation: fadeInLightbox 0.25s ease-out;
+}
+
+/* الصورة المكبرة جوه اللوكس بوكس */
+.lightbox-img {
+  max-width: 90%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  background: #ffffff; /* عشان الصورة تظهر واضحة */
+  padding: 15px;
+  animation: zoomInImg 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* زرار الإغلاق X فوق على الشمال */
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  left: 20px; /* متناسق مع الاتجاهات */
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: none;
+  font-size: 2.5rem;
+  width: 50px;
+  height: 50px;
+  line-height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-close:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: rotate(90deg);
+}
+
+/* تأثيرات الأنيميشن النعومة */
+@keyframes fadeInLightbox {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomInImg {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* دعم الموبايل عشان الصورة متلزقش في حواف الشاشة */
+@media (max-width: 560px) {
+  .lightbox-img {
+    max-width: 95%;
+    max-height: 70vh;
+    padding: 8px;
+  }
+  .lightbox-close {
+    top: 15px;
+    left: 15px;
+    width: 44px;
+    height: 44px;
+    font-size: 2rem;
+  }
+}
+/* حاوية الصورة مع العنوان الافتراضي للمنتج */
+.lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+}
+
+/* اسم المنتج المعروض تحت الصورة المكبرة */
+.lightbox-caption {
+  color: #ffffff;
+  margin-top: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+/* ستايل أزرار الأسهم يمين وشمال */
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: none;
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  user-select: none;
+  z-index: 2100;
+}
+
+.lightbox-arrow:hover {
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.lightbox-arrow--left {
+  left: 30px; /* مكان السهم الشمال */
+}
+
+.lightbox-arrow--right {
+  right: 30px; /* مكان السهم اليمين */
+}
+
+/* تحسينات لملائمة شاشات الموبايل */
+@media (max-width: 768px) {
+  .lightbox-arrow {
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
+  }
+  .lightbox-arrow--left {
+    left: 10px;
+  }
+  .lightbox-arrow--right {
+    right: 10px;
+  }
+  .lightbox-img {
+    max-width: 85%; /* سحب حواف الصورة عشان متغطيش على الأسهم في الشاشات الصغيرة */
+  }
 }
