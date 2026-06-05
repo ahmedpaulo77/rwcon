@@ -8,7 +8,7 @@ import './ServicePage.css';
 const landscapeProjects = [
   { 
     id: 1, 
-    title: 'مشروع لاندسكيب مبنى المبيعات تبوك', 
+    title: 'مشروع لاندسكيب NHC', 
     desc: 'تنسيق الحدائق والمساحات الخضراء المحيطة بالمبنى بأحدث النظم العالمية', 
     images: [
       require('../images/70.jpg'),
@@ -18,7 +18,7 @@ const landscapeProjects = [
   },
   { 
     id: 2, 
-    title: 'مشروع مسجد هيا الحسن', 
+    title: 'مشروع لاندسكيب مسجد ', 
     desc: 'تنسيق المسطحات والممرات الخضراء حول المسجد لتوائم الطابع المعماري الخارجي', 
     images: [
       require('../images/78.jpg'),
