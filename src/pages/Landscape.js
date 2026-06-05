@@ -7,12 +7,78 @@ import './ServicePage.css';
 
 const landscapeProjects = [
   { 
+    id: 3, 
+    title: 'أعمال توريد زراعة طبيعية مع أصص بفندق هوليداي ان بتبوك', 
+    desc: 'تنسيق داخلي وخارجي فاخر باستخدام نباتات طبيعية منتقاة بعناية مدمجة مع تشكيلة الأصص الحديثة لتوائم الطابع الفندقي الراقي.', 
+    images: [
+      require('../images/101.jpg'), // غير اسم الصورة هنا بناءً على ملفك الجديد
+      require('../images/102.jpg'), // غير اسم الصورة الثانية
+      require('../images/103.jpg')  // غير اسم الصورة الثالثة
+    ]
+  },
+  { 
+    id: 4, 
+    title: 'من اعمالنا توريد وزراعة الاصيص الديكوري الدوار بأحد مقرات الشركات', 
+    desc: 'تنسيق داخلي وخارجي فاخر باستخدام نباتات طبيعية منتقاة بعناية مدمجة مع تشكيلة الأصص الحديثة لتوائم الطابع الفندقي الراقي.', 
+    images: [
+      require('../images/104.jpg'),
+      require('../images/105.jpg'), // غير اسم الصورة هنا بناءً على ملفك الجديد
+      require('../images/106.jpg'), // غير اسم الصورة الثانية
+      require('../images/107.jpg')  // غير اسم الصورة الثالثة
+    ]
+    
+  },
+  { 
+    id: 6, 
+    title: 'تنسيق احواض وحديقه فله بالرياض', 
+    desc: 'تنسيق داخلي وخارجي فاخر باستخدام نباتات طبيعية منتقاة بعناية مدمجة مع تشكيلة الأصص الحديثة لتوائم الطابع الفندقي الراقي.', 
+    images: [
+      require('../images/111.jpg'),
+      require('../images/112.jpg'),
+      require('../images/113.jpg'),
+      require('../images/114.jpg'),
+      require('../images/115.jpg'),
+      require('../images/116.jpg'),
+      require('../images/117.jpg'), // غير اسم الصورة هنا بناءً على ملفك الجديد
+      require('../images/118.jpg'), // غير اسم الصورة الثانية
+      require('../images/119.jpg')  // غير اسم الصورة الثالثة
+    ]
+    
+  },
+  { 
+    id: 7, 
+    title: 'اعمال توريد الزراعة الطبيعية مبنى وزارة الاسكان مع اصيص  بجدة', 
+    desc: 'تنسيق داخلي وخارجي فاخر باستخدام نباتات طبيعية منتقاة بعناية مدمجة مع تشكيلة الأصص الحديثة لتوائم الطابع الفندقي الراقي.', 
+    images: [
+      require('../images/120.jpg'),
+      require('../images/121.jpg'),
+      require('../images/122.jpg'),
+      require('../images/123.jpg'),
+      
+    ]
+    
+  },
+  { 
+    id: 5, 
+    title: ' تنسيق احواض فيلا بالرياض ', 
+    desc: 'تنسيق داخلي وخارجي فاخر باستخدام نباتات طبيعية منتقاة بعناية مدمجة مع تشكيلة الأصص الحديثة لتوائم الطابع الفندقي الراقي.', 
+    images: [
+      require('../images/109.jpg'),
+      require('../images/108.jpg'), // غير اسم الصورة هنا بناءً على ملفك الجديد
+      require('../images/110.jpg'), // غير اسم الصورة الثانية
+     ]
+    
+  },
+  
+  
+  { 
     id: 1, 
     title: 'مشروع لاندسكيب NHC', 
     desc: 'تنسيق الحدائق والمساحات الخضراء المحيطة بالمبنى بأحدث النظم العالمية', 
     images: [
-      require('../images/70.jpg'),
+      
       require('../images/71.jpg'),
+      require('../images/70.jpg'),
       require('../images/72.jpg')
     ]
   },
@@ -64,7 +130,7 @@ function Landscape() {
         description="تنسيق المساحات الخضراء والحدائق بأعلى معايير الاحترافية بحسب كتالوج ومشاريع الشركة"
       />
       <main className="page-content service-section">
-        {/* تم حذف شريط الفلاتر وعرض الشبكة مباشرة */}
+        {/* عرض الشبكة مباشرة للمشاريع */}
         <div className="products-grid">
           {landscapeProjects.map((project) => (
             <article className="project-card" key={project.id}>
@@ -86,7 +152,7 @@ function Landscape() {
                 )}
               </div>
               <div className="project-info">
-                <h3>{project.title}</h3>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 'bold', lineHeight: '1.5' }}>{project.title}</h3>
                 <p>{project.desc}</p>
               </div>
             </article>
