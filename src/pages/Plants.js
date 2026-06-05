@@ -59,71 +59,140 @@ import pot36 from '../images/36.png';
 
 import './ServicePage.css';
 
+// قاموس الألوان الثابتة المأخوذة من سكرينات الكتالوج بالظبط
+const C = {
+  white: '#FFFFFF',
+  black: '#000000',
+  red: '#FF0000',
+  orange: '#F39200',
+  yellow: '#FFF100',
+  lightGrey: '#C9C9C9',
+  beige: '#D9B98C',
+  pink: '#E65AA6',
+  brown: '#6B2F12',
+  grey: '#B8B8B8',
+  darkBlue: '#2E1557'
+};
 const products = [
   // ==================== 1. النباتات (plants) ====================
-  { id: 1, category: 'plants', name: 'الأقحوان الشجيرى', price: 35, desc: 'يزدهر في الشمس الكاملة، وهو ما يساعده على إنتاج غزير للزهور .', img: p1 },
-  { id: 2, category: 'plants', name: 'البقس', price: 220, desc: 'شجيرة زينة دائمة الخضرة تتميز بأوراق كثيفة صغيرة، مثالية للتشكيل والديكورات.', img: p2 },
-  { id: 3, category: 'plants', name: 'السيكاس ', price: 300, desc: 'نموها بطيء جدا مما يجعلها ثمينة، تتحمل الحرارة والبرودة، وتفضل الأماكن الواسعة لتبرز جمالها .', img: p3 },
-  { id: 4, category: 'plants', name: ' باكيرا ', price: 250, desc: 'نبات زينة أنيق يعرف بشجرة المال، يتميز بسهولة العناية به ويعرف بشجرة المال، يتميز بسهولة العناية به .', img: p4 },
-  { id: 5, category: 'plants', name: 'بيتوسبوروم مبرقش (ايفونيموس) ', price: 250, desc: 'هو نبات مرن يزدهر في الشمس المباشرة أو الظل الجزئي، ويحتاج إلى ري متوسط عند جفاف التربة مع ضرورة وجود صرف جيد للمياه لتجنب تعفن الجذور .', img: p5 },
-  { id: 6, category: 'plants', name: 'جلد النمر ', price: 50, desc: 'قوي جدا يتحمل قلة الضوء وقلة السقي، مثالي جدا لغرف النوم والمكاتب.', img: p6 },
-  { id: 7, category: 'plants', name: ' دراسينا مانسجيانا ', price: 140, desc: 'نبات داخلي بامتياز، يحب الضوء الساطع غير المباشر، ولايحتاج للكثير من الماء؛ فهو يتحمل الإهمال قليلا.', img: p7 },
-  { id: 8, category: 'plants', name: 'فيكس باندا', price: 30, desc: 'هو شجرة زينة صغيرة بأوراق كثيفة لامعة، تتميز بسهولة العناية وتناسب الديكورات الداخلية والخارجية.', img: p10 },
-  { id: 9, category: 'plants', name: ' فيكس بنجامينا ', price: 230, desc: 'شجرة زينة أنيقة بأوراق خضراء متدلية، تضيف لمسة طبيعية جميلة وتناسب الأماكن الداخلية والخارجية مع عناية بسيطة.', img: p11 },
-  { id: 10, category: 'plants', name: ' فيكس بونساى', price: 180, desc: 'تحتاج إلى ضوء ساطع، ورطوبة جوية (رش الأوراق برذاذ الماء)، وتنسيق بسيط للحفاظ على شكلها الجمالى.', img: p12 },
-  { id: 11, category: 'plants', name: 'فيكس جينسنج', price: 130, desc: 'تحتاج إلى ضوء ساطع، ورطوبة جوية رش الأوراق برذاذ الماء، وتنسيق بسيط للحفاظ على شكلها الجمالى.', img: p13 },
-  { id: 12, category: 'plants', name: 'ليمون', price: 50, desc: 'تنتج ليمون وتحتاج إلى شمس مباشرة (خارجية)، ري منتظم عند جفاف التربة، وتعتبر من الأشجار التي تضفى حيوية وطاقة إيجابية للمكان.', img: p14 },
-  { id: 13, category: 'plants', name: 'يوكا ثلاثية ', price: 210, desc: 'تحب الإضاءة القوية، وتتحمل الجفاف بشكل رائع، لذا لا تفرط في سقيها.', img: p15 },
-  { id: 14, category: 'plants', name: 'سرو ليمونى', price: 250, desc: 'يفضل الأماكن الباردة والضوء القوي جدا، ويجب الحفاظ على تربته رطبة باستمرار دون إغراق.', img: p18 },
-  { id: 15, category: 'plants', name: ' فيكس ايلاستيكا', price: 90, desc: 'تعشق الضوء الساطع "غير المباشر" (خلف نافذة)؛ فالإضاءة الضعيفة تجعل أوراقها تتساقط، والشمس المباشرة القوية جداً قد تحرق أطرافه .', img: p19 },
+  { id: 1, category: 'plants', name: 'الأقحوان الشجيرى', sizes: [{ size: 'نبات طبيعي', price: '35 ريال' }], desc: 'يزدهر في الشمس الكاملة، وهو ما يساعده على إنتاج غزير للزهور .', img: p1 },
+  { id: 2, category: 'plants', name: 'البقس', sizes: [{ size: 'نبات طبيعي', price: '220 ريال' }], desc: 'شجيرة زينة دائمة الخضرة تتميز بأوراق كثيفة صغيرة، مثالية للتشكيل والديكورات.', img: p2 },
+  { id: 3, category: 'plants', name: 'السيكاس ', sizes: [{ size: 'نبات طبيعي', price: '300 ريال' }], desc: 'نموها بطيء جدا مما يجعلها ثمينة، تتحمل الحرارة والبرودة، وتفضل الأماكن الواسعة لتبرز جمالها .', img: p3 },
+  { id: 4, category: 'plants', name: ' باكيرا ', sizes: [{ size: 'نبات داخلي', price: '250 ريال' }], desc: 'نبات زينة أنيق يعرف بشجرة المال، يتميز بسهولة العناية به ويتميز بسهولة العناية به .', img: p4 },
+  { id: 5, category: 'plants', name: 'بيتوسبوروم مبرقش (ايفونيموس) ', sizes: [{ size: 'نبات طبيعي', price: '250 ريال' }], desc: 'هو نبات مرن يزدهر في الشمس المباشرة أو الظل الجزئي، ويحتاج إلى ري متوسط عند جفاف التربة مع ضرورة وجود صرف جيد للمياه لتجنب تعفن الجذور .', img: p5 },
+  { id: 6, category: 'plants', name: 'جلد النمر ', sizes: [{ size: 'نبات داخلي', price: '50 ريال' }], desc: 'قوي جدا يتحمل قلة الضوء وقلة السقي، مثالي جدا لغرف النوم والمكاتب.', img: p6 },
+  { id: 7, category: 'plants', name: ' دراسينا مانسجيانا ', sizes: [{ size: 'نبات داخلي', price: '140 ريال' }], desc: 'نبات داخلي بامتياز، يحب الضوء الساطع غير المباشر، ولايحتاج للكثير من الماء؛ فهو يتحمل الإهمال قليلا.', img: p7 },
+  { id: 8, category: 'plants', name: 'فيكس باندا', sizes: [{ size: 'نبات طبيعي', price: '30 ريال' }], desc: 'هو شجرة زينة صغيرة بأوراق كثيفة لامعة، تتميز بسهولة العناية وتناسب الديكورات الداخلية والخارجية.', img: p10 },
+  { id: 9, category: 'plants', name: ' فيكس بنجامينا ', sizes: [{ size: 'نبات طبيعي', price: '230 ريال' }], desc: 'شجرة زينة أنيقة بأوراق خضراء متدلية، تضيف لمسة طبيعية جميلة وتناسب الأماكن الداخلية والخارجية مع عناية بسيطة.', img: p11 },
+  { id: 10, category: 'plants', name: ' فيكس بونساى', sizes: [{ size: 'شجرة زينة', price: '180 ريال' }], desc: 'تحتاج إلى ضوء ساطع، ورطوبة جوية (رش الأوراق برذاذ الماء)، وتنسيق بسيط للحفاظ على شكلها الجمالى.', img: p12 },
+  { id: 11, category: 'plants', name: 'فيكس جينسنج', sizes: [{ size: 'شجرة زينة', price: '130 ريال' }], desc: 'تحتاج إلى ضوء ساطع، ورطوبة جوية رش الأوراق برذاذ الماء، وتنسيق بسيط للحفاظ على شكلها الجمالى.', img: p13 },
+  { id: 12, category: 'plants', name: 'ليمون', sizes: [{ size: 'شجرة مثمرة', price: '50 ريال' }], desc: 'تنتج ليمون وتحتاج إلى شمس مباشرة (خارجية)، ري منتظم عند جفاف التربة، وتعتبر من الأشجار التي تضفى حيوية وطاقة إيجابية للمكان.', img: p14 },
+  { id: 13, category: 'plants', name: 'يوكا ثلاثية ', sizes: [{ size: 'نبات داخلي', price: '210 ريال' }], desc: 'تحب الإضاءة القوية، وتتحمل الجفاف بشكل رائع، لذا لا تفرط في سقيها.', img: p15 },
+  { id: 14, category: 'plants', name: 'سرو ليمونى', sizes: [{ size: 'نبات طبيعي', price: '250 ريال' }], desc: 'يفضل الأماكن الباردة والضوء القوي جدا، ويجب الحفاظ على تربته رطبة باستمرار دون إغراق.', img: p18 },
+  { id: 15, category: 'plants', name: ' فيكس ايلاستيكا', sizes: null, desc: 'تعشق الضوء الساطع "غير المباشر" (خلف نافذة)؛ فالإضاءة الضعيفة تجعل أوراقها تتساقط، والشمس المباشرة القوية جداً قد تحرق أطرافه .', img: p19 },
 
-  // ==================== 2. تشكيلة ليف - أواني مميزة (leaf) ====================
-  { id: 16, category: 'leaf', name: ' روكن ورقة الشجر', price: 'صغير: 120 | كبير: 180', img: pot36 },
-  { id: 40, category: 'leaf', name: 'روكن ليف كيوب', price: 'صغير: 120 | كبير: 210', img: pot17 },
-  { id: 19, category: 'leaf', name: 'مود الطبيعة', price: 'صغير: 120 | كبير: 200', img: pot31 },
-  { id: 33, category: 'leaf', name: 'روكن وود ناتشور', price: 'صغير: 210 | كبير: 310', img: pot21 },
-  { id: 21, category: 'leaf', name: 'مود المربع الكبير', price: 'صغير: 390 | كبير: 460', img: pot33 },
-  { id: 23, category: 'leaf', name: 'مود المستطيل الكبير', price: 'صغير: 800 | كبير: 900', img: pot35 },
+  // ==================== 2. تشكيلة ليف (leaf) ====================
+  { id: 16, category: 'leaf', name: ' روكن ورقة الشجر', sizes: [{ size: '43DX40H', price: '120 ريال' }, { size: '55DX50H', price: '180 ريال' }], img: pot36 },
+  { id: 40, category: 'leaf', name: 'روكن ليف كيوب', sizes: [{ size: '40DX40H', price: '120 ريال' }, { size: '50DX50H', price: '210 ريال' }], img: pot17 },
+  { id: 19, category: 'leaf', name: 'مود الطبيعة', sizes: [{ size: '29DX28H', price: '120 ريال' }, { size: '43DX40H', price: '200 ريال' }], img: pot31 },
+  { id: 33, category: 'leaf', name: 'روكن وود ناتشور', sizes: [{ size: '43DX40H', price: '210 ريال' }, { size: '55DX50H', price: '310 ريال' }], img: pot21 },
+  { id: 21, category: 'leaf', name: 'مود المربع الكبير', sizes: [{ size: '45DX45H', price: '390 ريال' }, { size: '55DX55H', price: '460 ريال' }], img: pot33 },
+  { id: 23, category: 'leaf', name: 'مود المستطيل الكبير', sizes: [{ size: '80DX40H', price: '800 ريال' }, { size: '100DX45H', price: '900 ريال' }], img: pot35 },
 
-  // ==================== 3. تشكيلة نيتشور - أشكال طبيعية (nature) ====================
-  { id: 26, category: 'nature', name: 'روكن الموج الأبيض', price: 190, img: pot2 },
-  { id: 27, category: 'nature', name: 'روكن الموج الأسود', price: 250, img: pot3 },
-  { id: 28, category: 'nature', name: 'روكن بامبو', price: 120, img: pot6 },
-  { id: 49, category: 'nature', name: 'روكن خطوط', price: 150, img: pot10 },
-  { id: 25, category: 'nature', name: 'روكن إعصار', price: 260, img: pot1 },
-  { id: 31, category: 'nature', name: 'روكن بابلز', price: 180, img: pot5 },
-  { id: 37, category: 'nature', name: 'روكن صخر', price: 'صغير: 200 | كبير: 320', img: pot27 },
-  { id: 35, category: 'nature', name: 'روكن برايل', price: 'صغير: 120 | كبير: 170', img: pot23 },
-  { id: 34, category: 'nature', name: 'روكن جرة', price: 75, img: pot24 },
-  { id: 38, category: 'nature', name: 'روكن شعاع', price: 250, img: pot26 },
-  { id: 32, category: 'nature', name: 'روكن خرز', price: 'صغير: 120 | كبير: 175', img: pot25 },
-  { id: 36, category: 'nature', name: 'روكن بحر', price: 200, img: pot22 },
-  { id: 52, category: 'nature', name: 'روكن دوامة ', price: 150, img: pot11 },
-  { id: 41, category: 'nature', name: 'روكن صدفة', price: 320, img: pot28 },
-  { id: 39, category: 'nature', name: 'روكن كأس', price: 140, img: pot29 },
-  { id: 44, category: 'nature', name: 'روكن كيرف', price: 100, img: pot16 },
-  { id: 29, category: 'nature', name: 'روكن محيط', price: 200, img: pot30 },
+  // ==================== 3. تشكيلة نيتشور (nature) ====================
+  { id: 26, category: 'nature', name: 'روكن الموج الأبيض', sizes: [{ size: '29DX28H', price: '190 ريال' }], img: pot2 },
+  { id: 27, category: 'nature', name: 'روكن الموج الأسود', sizes: [{ size: '43DX40H', price: '250 ريال' }], img: pot3 },
+  { id: 28, category: 'nature', name: 'روكن بامبو', sizes: [{ size: '29DX28H', price: '120 ريال' }], img: pot6 },
+  { id: 49, category: 'nature', name: 'روكن خطوط', sizes: [{ size: '33DX28H', price: '150 ريال' }], img: pot10 },
+  { id: 25, category: 'nature', name: 'روكن إعصار', sizes: [{ size: '44DX38H', price: '260 ريال' }], img: pot1 },
+  { id: 31, category: 'nature', name: 'روكن بابلز', sizes: [{ size: '33DX28H', price: '180 ريال' }], img: pot5 },
+  { id: 37, category: 'nature', name: 'روكن صخر', sizes: [{ size: '40DX40H', price: '200 ريال' }, { size: '50DX50H', price: '320 ريال' }], img: pot27 },
+  { id: 35, category: 'nature', name: 'روكن برايل', sizes: [{ size: '40DX40H', price: '120 ريال' }, { size: '50DX50H', price: '170 ريال' }], img: pot23 },
+  { id: 34, category: 'nature', name: 'روكن جرة', sizes: [{ size: '25DX30H', price: '75 ريال' }], img: pot24 },
+  { id: 38, category: 'nature', name: 'روكن شعاع', sizes: [{ size: '43DX40H', price: '250 ريال' }], img: pot26 },
+  { id: 32, category: 'nature', name: 'روكن خرز', sizes: [{ size: '40DX40H', price: '120 ريال' }, { size: '50DX50H', price: '175 ريال' }], img: pot25 },
+  { id: 36, category: 'nature', name: 'روكن بحر', sizes: [{ size: '44DX38H', price: '200 ريال' }], img: pot22 },
+  { id: 52, category: 'nature', name: 'روكن دوامة ', sizes: [{ size: '33DX28H', price: '150 ريال' }], img: pot11 },
+  { id: 41, category: 'nature', name: 'روكن صدفة', sizes: [{ size: '55DX50H', price: '320 ريال' }], img: pot28 },
+  { id: 39, category: 'nature', name: 'روكن كأس', sizes: [{ size: '33DX45H', price: '140 ريال' }], img: pot29 },
+  { id: 44, category: 'nature', name: 'روكن كيرف', sizes: [{ size: '29DX28H', price: '100 ريال' }], img: pot16 },
+  { id: 29, category: 'nature', name: 'روكن محيط', sizes: [{ size: '44DX38H', price: '200 ريال' }], img: pot30 },
 
-  // ==================== 4. تشكيلة فيلا - أواني فاخرة (villa) ====================
-  { id: 24, category: 'villa', name: 'روكن مينى', price: 260, img: pot20 },
-  { id: 18, category: 'villa', name: 'روكن ماكسى', price: 350, img: pot18 },
-  { id: 43, category: 'villa', name: 'روكن منتا', price: 630, img: pot19 },
-  { id: 45, category: 'villa', name: ' روكن كاميتا', price: 650, img: pot15 },
-  { id: 47, category: 'villa', name: 'روكن انجولو', price: 650, img: pot4 },
-  { id: 51, category: 'villa', name: 'روكن كالستو', price: 380, img: pot13 },
-  { id: 50, category: 'villa', name: 'روكن بيكو', price: 500, img: pot7 },
-  { id: 53, category: 'villa', name: 'روكن توندو', price: 620, img: pot8 },
-  { id: 30, category: 'villa', name: 'روكن كاريا', price: 620, img: pot12 },
-  { id: 46, category: 'villa', name: 'روكن كامنثا', price: 750, img: pot14 },
-  { id: 48, category: 'villa', name: 'روكن جاردينيا', price: 560, img: pot9 }
+  // ==================== 4. تشكيلة فيلا (الألوان الدقيقة لكل عنصر من الـ 11 بناءً على السكرينات) ====================
+  // ==================== 4. تشكيلة فيلا ====================
+
+{ id: 24, category: 'villa', name: 'روكن مينى',
+  colors: [C.white,C.black,C.red,C.yellow,C.lightGrey,C.pink,C.beige,C.brown,C.orange,C.darkBlue,C.grey],
+  sizes: [{ size: '35DX33H', price: '260 ريال' }],
+  img: pot20
+},
+
+{ id: 18, category: 'villa', name: 'روكن ماكسى',
+  colors: [C.white,C.black,C.red,C.yellow,C.lightGrey,C.beige,C.brown,C.darkBlue,C.grey],
+  sizes: [{ size: '42DX40H', price: '350 ريال' }],
+  img: pot18
+},
+
+{ id: 43, category: 'villa', name: 'روكن منتا',
+  colors: [C.white,C.black,C.red,C.yellow,C.lightGrey,C.beige,C.brown,C.darkBlue,C.grey],
+  sizes: [{ size: '50DX47H', price: '630 ريال' }],
+  img: pot19
+},
+
+{ id: 45, category: 'villa', name: 'روكن كاميتا',
+  colors: [C.white,C.black,C.red,C.yellow,C.lightGrey,C.beige,C.brown,C.darkBlue,C.grey],
+  sizes: [{ size: '60DX56H', price: '650 ريال' }],
+  img: pot15
+},
+
+{ id: 47, category: 'villa', name: 'روكن انجولو',
+  colors: [C.white,C.black,C.red,C.brown,C.beige,C.darkBlue,C.grey],
+  sizes: [{ size: '40LX40WX75H', price: '650 ريال' }],
+  img: pot4
+},
+
+{ id: 51, category: 'villa', name: 'روكن كالستو',
+  colors: [C.white,C.black,C.red,C.orange,C.yellow,C.lightGrey,C.pink,C.beige,C.brown,C.darkBlue,C.grey],
+  sizes: [{ size: '31LX31WX56H', price: '380 ريال' }],
+  img: pot13
+},
+
+{ id: 50, category: 'villa', name: 'روكن بيكو',
+  colors: [C.white,C.black,C.brown,C.beige,C.darkBlue],
+  sizes: [{ size: '40LX40WX75H', price: '500 ريال' }],
+  img: pot7
+},
+
+{ id: 53, category: 'villa', name: 'روكن توندو',
+  colors: [C.white,C.black,C.red,C.brown,C.beige,C.darkBlue,C.grey],
+  sizes: [{ size: '40DX75H', price: '620 ريال' }],
+  img: pot8
+},
+
+{ id: 30, category: 'villa', name: 'روكن كاريا',
+  colors: [C.white,C.black,C.red,C.brown,C.beige,C.darkBlue,C.grey],
+  sizes: [{ size: '50LX50WX47H', price: '620 ريال' }],
+  img: pot12
+},
+
+{ id: 46, category: 'villa', name: 'روكن كامنثا',
+  colors: [C.white,C.black,C.red,C.brown,C.beige,C.darkBlue,C.grey],
+  sizes: [{ size: '60LX60WX57H', price: '750 ريال' }],
+  img: pot14
+},
+
+{ id: 48, category: 'villa', name: 'روكن جاردينيا',
+  colors: [C.white,C.black,C.red,C.brown,C.grey],
+  sizes: [{ size: '80LX31WX45H', price: '560 ريال' }],
+  img: pot9
+},
 ];
-
 const FILTERS = [
-  { key: 'all', label: 'الكل' },
-  { key: 'plants', label: 'النباتات' },
-  { key: 'leaf', label: ' تشكيلة ليف - أواني مميزة' },
-  { key: 'nature', label: 'تشكيلة نيتشور - أشكال طبيعية' },
-  { key: 'villa', label: 'تشكيلة فيلا - أواني فاخرة' }
+  { key: 'all', label: 'الكل', desc: null },
+  { key: 'plants', label: 'النباتات', desc: 'مجموعة من أرقى النباتات الطبيعية الداخلية والخارجية المنتقاة بعناية لتزيين مساحتك.' },
+  { key: 'leaf', label: ' تشكيلة ليف - أواني مميزة', desc: 'ست تصميمات فريدة من الأواني المستوحاة من الطبيعة — من الأشكال الكلاسيكية إلى المربعات و المستطيلات العصرية، بلاستيك عالي الجودة و جميع الالوان متاحة.' },
+  { key: 'nature', label: 'تشكيلة نيتشور - أشكال طبيعية', desc: 'واحد وعشرون تصميماً مستوحى من الطبيعة — موجات وصخور وأصداف وأشكال بحرية و جبلية تضفي جمالاً فريداً.' },
+  { key: 'villa', label: 'تشكيلة فيلا - أواني فاخرة', desc: 'أحد عشر تصميماً من الأواني الفاخرة — أحجام كبيرة وتصاميم راقية مثالية للحدائق و المداخل و المساحات الفاخرة، مصنوع من البولي بروبلين عالي الجودة و معالج ضد الاشعة فوق البنفسجية.' }
 ];
 
 function Plants() {
@@ -133,6 +202,8 @@ function Plants() {
   const filtered = active === 'all'
     ? products
     : products.filter(p => p.category === active);
+
+  const activeCategory = FILTERS.find(f => f.key === active);
 
   const showNextImg = (e) => {
     e.stopPropagation();
@@ -153,7 +224,7 @@ function Plants() {
   };
 
   return (
-    <div className="page page--plants">
+    <div className="page page--plants" style={{ direction: 'rtl' }}>
       <Navbar />
       <PageHero
         title="المزروعات والأواني الفاخرة"
@@ -174,33 +245,122 @@ function Plants() {
             </button>
           ))}
         </div>
+
+        {activeCategory && activeCategory.desc && (
+          <div className="category-description-box" style={{ 
+            backgroundColor: '#f9f9f9', 
+            borderRight: '4px solid #2e7d32', 
+            padding: '15px 20px', 
+            borderRadius: '8px', 
+            marginBottom: '30px',
+            textAlign: 'right',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+          }}>
+            <p style={{ margin: 0, fontSize: '1.05rem', color: '#444', lineHeight: '1.6', fontWeight: '500' }}>
+              {activeCategory.desc}
+            </p>
+          </div>
+        )}
+
         <div className="products-grid">
           {filtered.map((product, index) => (
             <article className="product-card" key={product.id}>
-              <img
-                src={product.img}
-                alt={product.name}
-                className="product-imgclickable"
-                onClick={() => setCurrentImgIndex(index)}
-                title="اضغط لتكبير الصورة"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = '/logo192.png';
-                }}
-              />
+              
+              {/* قسم يحتوي على الدوائر الملونة الجانبية إذا وجدت للمنتج */}
+              <div style={{ display: 'flex', position: 'relative' }}>
+                
+                {product.colors && product.colors.length > 0 && (
+                  <div className="product-colors-sidebar" style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '6px',
+                    padding: '10px 5px',
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    borderLeft: '1px solid #eee',
+                    marginLeft: '8px'
+                  }}>
+                    {product.colors.map((colorCode, cIdx) => (
+                      <span 
+                        key={cIdx} 
+                        style={{
+                          width: '14px',
+                          height: '14px',
+                          backgroundColor: colorCode,
+                          borderRadius: '50%',
+                          border: colorCode === '#FFFFFF' ? '1px solid #ccc' : '1px solid rgba(0,0,0,0.15)',
+                          display: 'inline-block'
+                        }}
+                        title="اللون المتاح"
+                      />
+                    ))}
+                  </div>
+                )}
+
+                <img
+                  src={product.img}
+                  alt={product.name}
+                  className="product-imgclickable"
+                  onClick={() => setCurrentImgIndex(index)}
+                  title="اضغط لتكبير الصورة"
+                  style={{ flex: 1, objectFit: 'contain' }}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/logo192.png';
+                  }}
+                />
+              </div>
+              
               <div className="product-info">
                 <h3>{product.name}</h3>
 
                 {product.desc && (
-                  <p className="product-desc" style={{ fontSize: '0.85rem', color: '#666', marginTop: '4px', marginBottom: '8px', lineHeight: '1.4' }}>
+                  <p className="product-desc" style={{ fontSize: '0.85rem', color: '#666', marginTop: '4px', marginBottom: '12px', lineHeight: '1.4' }}>
                     {product.desc}
                   </p>
                 )}
 
-                {product.price
-                  ? <p className="price">{product.price} ريال</p>
-                  : <p className="price-inquiry">السعر عند التواصل</p>
-                }
+                {product.sizes ? (
+                  <div className="product-sizes-table" style={{
+                    backgroundColor: '#f5f5f5',
+                    borderRadius: '6px',
+                    padding: '8px 12px',
+                    margin: '10px 0',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '6px'
+                  }}>
+                    {product.sizes.map((item, idx) => (
+                      <div key={idx} style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        fontSize: '0.85rem',
+                        borderBottom: idx < product.sizes.length - 1 ? '1px dashed #ddd' : 'none',
+                        paddingBottom: idx < product.sizes.length - 1 ? '4px' : '0'
+                      }}>
+                        <span style={{ 
+                          direction: 'ltr', 
+                          fontWeight: '600', 
+                          color: '#555',
+                          fontFamily: 'monospace' 
+                        }}>
+                          {item.size}
+                        </span>
+                        
+                        <span style={{ 
+                          fontWeight: 'bold', 
+                          color: '#2e7d32' 
+                        }}>
+                          {item.price}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="price-inquiry" style={{ margin: '12px 0', fontWeight: 'bold', color: '#777' }}>السعر عند التواصل</p>
+                )}
+
                 <a href="https://wa.me/966592001640" target="_blank" rel="noreferrer" className="btn-order">
                   اطلب الآن
                 </a>
