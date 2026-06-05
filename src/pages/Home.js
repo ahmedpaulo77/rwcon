@@ -3,40 +3,48 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import WhatsAppFab from '../Components/WhatsAppFab';
 import heroImg from '../images/hero.jpg';
+
+// استيراد صور حية ومعبرة وكبيرة لكل خدمة
+import poolsImg from '../images/73.jpg';      // صورة للمسابح
+import fountainsImg from '../images/83.jpg';  // صورة للنوافير
+import landscapeImg from '../images/79.jpg';  // صورة للاندسكيب
+import plantsImg from '../images/hero.jpg';     // صورة للمزروعات والأواني
+import magicImg from '../images/img13.jpeg';     // صورة لقسم ماجيك
+
 import './Home.css';
 
 const SERVICES = [
   {
     to: '/pools',
-    icon: '🏊',
+    img: poolsImg,
     title: 'المسابح',
     desc: 'تصميم وتنفيذ حمامات السباحة باحترافية عالية',
     theme: 'pools',
   },
   {
     to: '/fountains',
-    icon: '⛲',
+    img: fountainsImg,
     title: 'النوافير',
     desc: 'نوافير وأعمال مائية فريدة ومبتكرة',
     theme: 'fountains',
   },
   {
     to: '/landscape',
-    icon: '🌿',
+    img: landscapeImg,
     title: 'اللاندسكيب',
     desc: 'تنسيق المساحات الخضراء والحدائق',
     theme: 'landscape',
   },
   {
     to: '/plants',
-    icon: '🪴',
+    img: plantsImg,
     title: 'المزروعات والأواني',
     desc: 'نباتات طبيعية وأواني عصرية بأسعار مناسبة',
     theme: 'plants',
   },
   {
     to: '/magic',
-    icon: '✨',
+    img: magicImg,
     title: 'ماجيك',
     desc: 'نباتات عائمة مغناطيسية ديكور فريد',
     theme: 'magic',
@@ -51,7 +59,7 @@ function Home() {
       <section className="hero" style={{ backgroundImage: `url(${heroImg})` }}>
         <div className="hero__overlay" aria-hidden />
         <div className="hero__content">
-           <h1>
+          <h1>
             نحول مساحتك إلى
             <span className="highlight"> تحفة طبيعية</span>
           </h1>
@@ -59,9 +67,8 @@ function Home() {
             متخصصون في تنسيق المساحات الخضراء، المسابح، النوافير واللاندسكيب
             في المملكة العربية السعودية
           </p>
-         <div className="hero__actions">
-            
-              <a href="https://wa.me/966592001640" target="_blank" rel="noreferrer" className="btn-primary btn-hero">
+          <div className="hero__actions">
+            <a href="https://wa.me/966592001640" target="_blank" rel="noreferrer" className="btn-primary btn-hero">
               تواصل على واتساب
             </a>
             <Link to="/about" className="btn-secondary">
@@ -77,13 +84,23 @@ function Home() {
           <h2>خدماتنا</h2>
           <p>حلول متكاملة لكل مساحة — من التصميم حتى التسليم</p>
         </div>
+        
         <div className="services-grid">
-          {SERVICES.map(({ to, icon, title, desc, theme }) => (
-            <Link key={to} to={to} className={`service-card service-card--${theme}`}>
-              <span className="service-card__icon">{icon}</span>
-              <h3>{title}</h3>
-              <p>{desc}</p>
-              <span className="service-card__link">اكتشف المزيد ←</span>
+          {SERVICES.map(({ to, img, title, desc, theme }) => (
+            <Link 
+              key={to} 
+              to={to} 
+              className={`service-card service-card--full-bg service-card--${theme}`}
+              style={{ backgroundImage: `url(${img})` }}
+            >
+              {/* طبقة الظل لضمان وضوح النصوص البيضاء فوق الصورة */}
+              <div className="service-card__overlay" />
+              
+              <div className="service-card__content">
+                <h3>{title}</h3>
+                <p>{desc}</p>
+                <span className="service-card__link">اكتشف المزيد ←</span>
+              </div>
             </Link>
           ))}
         </div>

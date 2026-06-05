@@ -261,3 +261,76 @@
     font-size: 0.72rem;
   }
 }
+/* الكروت كخلفية كاملة */
+.service-card--full-bg {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 280px; /* طول الكارد ليعطي مساحة ممتازة للصورة */
+  display: flex;
+  align-items: flex-end; /* جعل النصوص في أسفل الكارد */
+  padding: 25px;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+/* طبقة الظل المتدرج داخل الكارد */
+.service-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 20%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.1) 100%);
+  z-index: 1;
+  transition: background 0.4s ease;
+}
+
+/* محتوى الكارد المستقر فوق الظل */
+.service-card__content {
+  position: relative;
+  z-index: 2;
+  color: #ffffff; /* نصوص بيضاء بالكامل لتظهر بوضوح فوق الصورة المظلمة */
+  text-align: right;
+  width: 100%;
+}
+
+.service-card__content h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.service-card__content p {
+  font-size: 0.95rem;
+  color: #e0e0e0;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.service-card__link {
+  font-size: 0.9rem;
+  color: #a7f3d0; /* لون أخضر فاتح ومريح للعين يعبر عن اللينك */
+  font-weight: bold;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* تأثيرات حركة تفاعلية عند تمرير الماوس على الكارد */
+.service-card--full-bg:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.service-card--full-bg:hover .service-card__overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.service-card--full-bg:hover .service-card__link {
+  transform: translateX(-5px); /* تحريك السهم قليلاً لليسار لإعطاء إيحاء بالتفاعل */
+}

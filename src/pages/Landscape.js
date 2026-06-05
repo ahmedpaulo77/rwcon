@@ -3,22 +3,39 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import PageHero from '../Components/PageHero';
 import WhatsAppFab from '../Components/WhatsAppFab';
-import landscape1 from '../images/landscape1.webp';
-import landscape2 from '../images/landscape2.webp';
 import './ServicePage.css';
 
-// عملنا مصفوفة للمشاريع عشان نسهل عملية اللوب والتقليب بالأسهم
 const landscapeProjects = [
-  { id: 1, title: 'فيلا بالرياض', desc: 'تنسيق أحواض وحديقة', img: landscape1 },
-  { id: 2, title: 'وزارة الإسكان جدة', desc: 'توريد زراعة طبيعية مع أصيص', img: landscape2 }
+  { 
+    id: 1, 
+    title: 'مشروع لاندسكيب مبنى المبيعات تبوك', 
+    desc: 'تنسيق الحدائق والمساحات الخضراء المحيطة بالمبنى بأحدث النظم العالمية', 
+    images: [
+      require('../images/70.jpg'),
+      require('../images/71.jpg'),
+      require('../images/72.jpg')
+    ]
+  },
+  { 
+    id: 2, 
+    title: 'مشروع مسجد هيا الحسن', 
+    desc: 'تنسيق المسطحات والممرات الخضراء حول المسجد لتوائم الطابع المعماري الخارجي', 
+    images: [
+      require('../images/78.jpg'),
+      require('../images/79.jpg'),
+      require('../images/80.jpg'),
+      require('../images/81.jpg')
+    ]
+  }
 ];
 
 function Landscape() {
-  const [currentImgIndex, setCurrentImgIndex] = useState(null);
+  const [activeProject, setActiveProject] = useState(null);
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
   const showNextImg = (e) => {
     e.stopPropagation();
-    if (currentImgIndex < landscapeProjects.length - 1) {
+    if (activeProject && currentImgIndex < activeProject.images.length - 1) {
       setCurrentImgIndex(currentImgIndex + 1);
     } else {
       setCurrentImgIndex(0);
@@ -27,31 +44,47 @@ function Landscape() {
 
   const showPrevImg = (e) => {
     e.stopPropagation();
-    if (currentImgIndex > 0) {
+    if (activeProject && currentImgIndex > 0) {
       setCurrentImgIndex(currentImgIndex - 1);
-    } else {
-      setCurrentImgIndex(landscapeProjects.length - 1);
+    } else if (activeProject) {
+      setCurrentImgIndex(activeProject.images.length - 1);
     }
+  };
+
+  const closeLightbox = () => {
+    setActiveProject(null);
+    setCurrentImgIndex(0);
   };
 
   return (
     <div className="page page--landscape">
       <Navbar />
       <PageHero
-        title="اللاندسكيب"
-        description="تنسيق المساحات الخضراء والحدائق بأعلى معايير الاحترافية"
+        title="اللاندسكيب وتنسيق الحدائق"
+        description="تنسيق المساحات الخضراء والحدائق بأعلى معايير الاحترافية بحسب كتالوج ومشاريع الشركة"
       />
       <main className="page-content service-section">
-        <div className="projects-grid">
-          {landscapeProjects.map((project, index) => (
+        {/* تم حذف شريط الفلاتر وعرض الشبكة مباشرة */}
+        <div className="products-grid">
+          {landscapeProjects.map((project) => (
             <article className="project-card" key={project.id}>
-              <img 
-                src={project.img} 
-                alt={project.title} 
-                className="project-img project-imgclickable" 
-                onClick={() => setCurrentImgIndex(index)}
-                title="اضغط لتكبير الصورة"
-              />
+              <div className="img-wrapper" style={{ position: 'relative' }}>
+                <img 
+                  src={project.images[0]} 
+                  alt={project.title} 
+                  className="project-img project-imgclickable" 
+                  onClick={() => {
+                    setActiveProject(project);
+                    setCurrentImgIndex(0);
+                  }}
+                  title="اضغط لتصفح ألبوم صور المشروع بالكامل"
+                />
+                {project.images.length > 1 && (
+                  <span className="images-count-badge" style={{ position: 'absolute', bottom: '10px', right: '10px', background: 'rgba(0,0,0,0.7)', color: '#fff', padding: '4px 8px', borderRadius: '4px', fontSize: '12px' }}>
+                    +{project.images.length - 1} صور إضافية
+                  </span>
+                )}
+              </div>
               <div className="project-info">
                 <h3>{project.title}</h3>
                 <p>{project.desc}</p>
@@ -64,26 +97,21 @@ function Landscape() {
         </a>
       </main>
 
-      {/* نافذة التكبير بالأسهم */}
-      {currentImgIndex !== null && (
-        <div className="lightbox-overlay" onClick={() => setCurrentImgIndex(null)}>
-          <button className="lightbox-close" onClick={() => setCurrentImgIndex(null)}>&times;</button>
-          
-          <button className="lightbox-arrow lightbox-arrow--left" onClick={showPrevImg}>&#10094;</button>
-          
+      {activeProject !== null && (
+        <div className="lightbox-overlay" onClick={closeLightbox}>
+          <button className="lightbox-close" onClick={closeLightbox}>&times;</button>
+          {activeProject.images.length > 1 && (
+            <>
+              <button className="lightbox-arrow lightbox-arrow--left" onClick={showPrevImg}>&#10094;</button>
+              <button className="lightbox-arrow lightbox-arrow--right" onClick={showNextImg}>&#10095;</button>
+            </>
+          )}
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <img 
-              src={landscapeProjects[currentImgIndex].img} 
-              alt={landscapeProjects[currentImgIndex].title} 
-              className="lightbox-img" 
-            />
-            <div className="lightbox-caption">{landscapeProjects[currentImgIndex].title}</div>
+            <img src={activeProject.images[currentImgIndex]} alt={activeProject.title} className="lightbox-img" />
+            <div className="lightbox-caption">{activeProject.title} ({currentImgIndex + 1} من {activeProject.images.length})</div>
           </div>
-          
-          <button className="lightbox-arrow lightbox-arrow--right" onClick={showNextImg}>&#10095;</button>
         </div>
       )}
-
       <Footer />
       <WhatsAppFab />
     </div>

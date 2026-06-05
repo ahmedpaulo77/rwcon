@@ -3,19 +3,38 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import PageHero from '../Components/PageHero';
 import WhatsAppFab from '../Components/WhatsAppFab';
-import fountain1 from '../images/fountain1.jpg';
 import './ServicePage.css';
 
 const fountainProjects = [
-  { id: 1, title: 'مركز المبيعات تبوك', desc: 'أعمال كهروميكانيكية للنافورة', img: fountain1 }
+  { 
+    id: 1, 
+    title: 'مشروع نافورة مبنى المبيعات تبوك', 
+    desc: 'أعمال كهروميكانيكية متكاملة للنافورة التجميلية المحيطة بالمبنى مع أنظمة المضخات الحديثة', 
+    images: [
+      require('../images/82.jpg'),
+      require('../images/83.jpg')
+    ]
+  },
+  { 
+    id: 2, 
+    title: 'مشروع نافورة هوليداي ان', 
+    desc: 'توريد وتركيب أنظمة التحكم المائي والإضاءة الحديثة لنوافير فندق هوليداي إن', 
+    images: [
+      require('../images/84.jpg'),
+      require('../images/85.jpg'),
+      require('../images/86.jpg'),
+      require('../images/87.jpg')
+    ]
+  }
 ];
 
 function Fountains() {
-  const [currentImgIndex, setCurrentImgIndex] = useState(null);
+  const [activeProject, setActiveProject] = useState(null);
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
   const showNextImg = (e) => {
     e.stopPropagation();
-    if (currentImgIndex < fountainProjects.length - 1) {
+    if (activeProject && currentImgIndex < activeProject.images.length - 1) {
       setCurrentImgIndex(currentImgIndex + 1);
     } else {
       setCurrentImgIndex(0);
@@ -24,31 +43,47 @@ function Fountains() {
 
   const showPrevImg = (e) => {
     e.stopPropagation();
-    if (currentImgIndex > 0) {
+    if (activeProject && currentImgIndex > 0) {
       setCurrentImgIndex(currentImgIndex - 1);
-    } else {
-      setCurrentImgIndex(fountainProjects.length - 1);
+    } else if (activeProject) {
+      setCurrentImgIndex(activeProject.images.length - 1);
     }
+  };
+
+  const closeLightbox = () => {
+    setActiveProject(null);
+    setCurrentImgIndex(0);
   };
 
   return (
     <div className="page page--fountains">
       <Navbar />
       <PageHero
-        title="النوافير"
+        title="النوافير والأعمال المائية"
         description="نوافير وأعمال مائية فريدة ومبتكرة تضفي جمالاً استثنائياً على مساحتك"
       />
       <main className="page-content service-section">
-        <div className="projects-grid">
-          {fountainProjects.map((project, index) => (
+        {/* تم حذف شريط الفلاتر وعرض الشبكة مباشرة */}
+        <div className="products-grid">
+          {fountainProjects.map((project) => (
             <article className="project-card" key={project.id}>
-              <img 
-                src={project.img} 
-                alt={project.title} 
-                className="project-img project-imgclickable" 
-                onClick={() => setCurrentImgIndex(index)}
-                title="اضغط لتكبير الصورة"
-              />
+              <div className="img-wrapper" style={{ position: 'relative' }}>
+                <img 
+                  src={project.images[0]} 
+                  alt={project.title} 
+                  className="project-img project-imgclickable" 
+                  onClick={() => {
+                    setActiveProject(project);
+                    setCurrentImgIndex(0);
+                  }}
+                  title="اضغط لتصفح ألبوم صور المشروع بالكامل"
+                />
+                {project.images.length > 1 && (
+                  <span className="images-count-badge" style={{ position: 'absolute', bottom: '10px', right: '10px', background: 'rgba(0,0,0,0.7)', color: '#fff', padding: '4px 8px', borderRadius: '4px', fontSize: '12px' }}>
+                    +{project.images.length - 1} صور إضافية
+                  </span>
+                )}
+              </div>
               <div className="project-info">
                 <h3>{project.title}</h3>
                 <p>{project.desc}</p>
@@ -61,26 +96,21 @@ function Fountains() {
         </a>
       </main>
 
-      {/* نافذة التكبير بالأسهم (حتى لو مشروع واحد، الكود مرن وجاهز لو ضفت مشاريع تانية بعدين) */}
-      {currentImgIndex !== null && (
-        <div className="lightbox-overlay" onClick={() => setCurrentImgIndex(null)}>
-          <button className="lightbox-close" onClick={() => setCurrentImgIndex(null)}>&times;</button>
-          
-          <button className="lightbox-arrow lightbox-arrow--left" onClick={showPrevImg}>&#10094;</button>
-          
+      {activeProject !== null && (
+        <div className="lightbox-overlay" onClick={closeLightbox}>
+          <button className="lightbox-close" onClick={closeLightbox}>&times;</button>
+          {activeProject.images.length > 1 && (
+            <>
+              <button className="lightbox-arrow lightbox-arrow--left" onClick={showPrevImg}>&#10094;</button>
+              <button className="lightbox-arrow lightbox-arrow--right" onClick={showNextImg}>&#10095;</button>
+            </>
+          )}
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <img 
-              src={fountainProjects[currentImgIndex].img} 
-              alt={fountainProjects[currentImgIndex].title} 
-              className="lightbox-img" 
-            />
-            <div className="lightbox-caption">{fountainProjects[currentImgIndex].title}</div>
+            <img src={activeProject.images[currentImgIndex]} alt={activeProject.title} className="lightbox-img" />
+            <div className="lightbox-caption">{activeProject.title} ({currentImgIndex + 1} من {activeProject.images.length})</div>
           </div>
-          
-          <button className="lightbox-arrow lightbox-arrow--right" onClick={showNextImg}>&#10095;</button>
         </div>
       )}
-
       <Footer />
       <WhatsAppFab />
     </div>
