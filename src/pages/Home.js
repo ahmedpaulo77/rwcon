@@ -51,7 +51,7 @@ function Home() {
       <section className="hero" style={{ backgroundImage: `url(${heroImg})` }}>
         <div className="hero__overlay" aria-hidden />
         <div className="hero__content">
-ؤ          <h1>
+           <h1>
             نحول مساحتك إلى
             <span className="highlight"> تحفة طبيعية</span>
           </h1>

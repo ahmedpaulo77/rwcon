@@ -2,17 +2,14 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import PageHero from '../Components/PageHero';
 import WhatsAppFab from '../Components/WhatsAppFab';
-import magicImage from '../images/mag.jpg';
+import flowerImg from '../images/flower.png';
+import monImg from '../images/mon.png';
 import './Magic.css';
 import './ServicePage.css';
 
 const magicProducts = [
-  { id: 1, name: 'أبجورة مودرن مضيئة', price: 120, image: magicImage },
-  { id: 2, name: 'وحدة إضاءة ديكورية فاخرة', price: 180, image: magicImage },
-  { id: 3, name: 'إكسسوارات ماجيك مضيئة', price: 95, image: magicImage },
-  { id: 4, name: 'أبجورة طاولة كلاسيك', price: 150, image: magicImage },
-  { id: 5, name: 'حامل إضاءة أرضي مودرن', price: 290, image: magicImage },
-  { id: 6, name: 'طقم إضاءة ديكور متكامل', price: 340, image: magicImage },
+  { id: 1, name: 'نبتة عائمة مغناطيسية — فلاور', price: 350, image: flowerImg },
+  { id: 2, name: 'نبتة عائمة مغناطيسية — مون',   price: 350, image: monImg },
 ];
 
 function Magic() {
@@ -22,7 +19,7 @@ function Magic() {
       <PageHero
         label="نحول مساحتك إلى"
         title="ماجيك"
-        description="أرقى الأبجورات ووحدات الإضاءة العصرية لإضافة لمسة سحرية على مساحتك"
+        description="نباتات عائمة مغناطيسية تضيف لمسة سحرية فريدة على مساحتك"
       />
       <main className="page-content">
         <div className="magic-grid">
@@ -49,3 +46,4 @@ function Magic() {
 }
 
 export default Magic;
+
