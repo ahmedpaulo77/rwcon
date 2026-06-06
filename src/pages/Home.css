@@ -334,3 +334,8 @@
 .service-card--full-bg:hover .service-card__link {
   transform: translateX(-5px); /* تحريك السهم قليلاً لليسار لإعطاء إيحاء بالتفاعل */
 }
+@media (max-width: 768px) {
+  .hero {
+    background-position: 45% center;
+  }
+}
