@@ -64,8 +64,7 @@ function Magic() {
               <div className="magic-details">
                 <h3>{product.name}</h3>
                 <p className="magic-price">{product.price} ريال</p>
-                <a href="https://wa.me/966592001640" target="_blank" rel="noreferrer" className="btn-order">
-                  اطلب الآن
+<a href={`https://wa.me/966592001640?text=${encodeURIComponent('السلام عليكم، أريد الاستفسار عن: ' + product.name)}`} target="_blank" rel="noreferrer" className="btn-order">                  اطلب الآن
                 </a>
               </div>
             </article>

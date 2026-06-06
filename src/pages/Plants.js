@@ -361,8 +361,7 @@ function Plants() {
                   <p className="price-inquiry" style={{ margin: '12px 0', fontWeight: 'bold', color: '#777' }}>السعر عند التواصل</p>
                 )}
 
-                <a href="https://wa.me/966592001640" target="_blank" rel="noreferrer" className="btn-order">
-                  اطلب الآن
+<a href={`https://wa.me/966592001640?text=${encodeURIComponent('السلام عليكم، أريد الاستفسار عن: ' + product.name)}`} target="_blank" rel="noreferrer" className="btn-order">                  اطلب الآن
                 </a>
               </div>
             </article>
