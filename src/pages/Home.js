@@ -5,10 +5,10 @@ import WhatsAppFab from '../Components/WhatsAppFab';
 import heroImg from '../images/hero.jpg';
 
 // استيراد صور حية ومعبرة وكبيرة لكل خدمة
-import poolsImg from '../images/73.jpg';      // صورة للمسابح
-import fountainsImg from '../images/83.jpg';  // صورة للنوافير
-import landscapeImg from '../images/79.jpg';  // صورة للاندسكيب
-import plantsImg from '../images/hero.jpg';     // صورة للمزروعات والأواني
+import poolsImg from '../images/m.jpg';      // صورة للمسابح
+import fountainsImg from '../images/200.jpg';  // صورة للنوافير
+import landscapeImg from '../images/111.jpg';  // صورة للاندسكيب
+import plantsImg from '../images/150.jpg';     // صورة للمزروعات والأواني
 import magicImg from '../images/img13.jpeg';     // صورة لقسم ماجيك
 
 import './Home.css';
@@ -70,9 +70,13 @@ function Home() {
           <div className="hero__actions">
             <a href="https://wa.me/966592001640" target="_blank" rel="noreferrer" className="btn-primary btn-hero">
               تواصل على واتساب
+              <br />
+              CONTACT US
             </a>
             <Link to="/about" className="btn-secondary">
               تعرّف علينا
+              <br />
+              ABOUT US
             </Link>
           </div>
         </div>
@@ -84,18 +88,18 @@ function Home() {
           <h2>خدماتنا</h2>
           <p>حلول متكاملة لكل مساحة — من التصميم حتى التسليم</p>
         </div>
-        
+
         <div className="services-grid">
           {SERVICES.map(({ to, img, title, desc, theme }) => (
-            <Link 
-              key={to} 
-              to={to} 
+            <Link
+              key={to}
+              to={to}
               className={`service-card service-card--full-bg service-card--${theme}`}
               style={{ backgroundImage: `url(${img})` }}
             >
               {/* طبقة الظل لضمان وضوح النصوص البيضاء فوق الصورة */}
               <div className="service-card__overlay" />
-              
+
               <div className="service-card__content">
                 <h3>{title}</h3>
                 <p>{desc}</p>

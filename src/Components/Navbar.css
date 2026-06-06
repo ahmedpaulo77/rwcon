@@ -1,15 +1,17 @@
 /* ==================== 1. الستايل الأساسي والكمبيوتر (Desktop) ==================== */
 .navbar-wrap {
-  position: relative; /* الكود الجديد: هيفضل ثابت فوق ومش هينزل مع السكرول */
-  z-index: 100;
-} 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: var(--nav-height, 70px);
   padding: 0 1.25rem;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgb(255, 255, 255);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border, #e2e8f0);
@@ -24,7 +26,7 @@
 }
 
 .nav-logo {
-  height: 48px;
+  height: 70px;
   width: auto;
   object-fit: contain;
 }

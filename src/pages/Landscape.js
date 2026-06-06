@@ -33,8 +33,7 @@ const landscapeProjects = [
     title: 'تنسيق احواض وحديقه فله بالرياض', 
     desc: 'تنسيق داخلي وخارجي فاخر باستخدام نباتات طبيعية منتقاة بعناية مدمجة مع تشكيلة الأصص الحديثة لتوائم الطابع الفندقي الراقي.', 
     images: [
-      require('../images/111.jpg'),
-      require('../images/112.jpg'),
+       require('../images/112.jpg'),
       require('../images/113.jpg'),
       require('../images/114.jpg'),
       require('../images/115.jpg'),
