@@ -40,7 +40,7 @@
 .values-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 @media (min-width: 600px) {
@@ -59,45 +59,38 @@
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 2rem 1.5rem;
+  overflow: hidden;
   text-align: center;
   box-shadow: var(--shadow);
   transition: all 0.3s ease;
 }
 
 .value-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
 }
 
 .value-icon {
-  width: 80px;
-  height: 80px;
-  background: rgba(200, 161, 47, 0.1);
-  color: #c8a12f;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-  font-size: 2rem;
-  transition: all 0.3s ease;
-}
+   height: 370px;
+  overflow: hidden;
+ }
 
-.value-card:hover .value-icon {
-  transform: scale(1.1);
-  background: rgba(200, 161, 47, 0.18);
+.value-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .value-card h3 {
   font-size: 1.2rem;
   font-weight: 800;
-  margin-bottom: 0.75rem;
+  margin: 1rem 0 0.5rem;
   color: var(--accent-dark);
 }
 
 .value-card p {
   color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.8;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding: 0 1rem 1.5rem;
 }

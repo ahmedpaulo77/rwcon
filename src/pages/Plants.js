@@ -75,115 +75,115 @@ const C = {
 };
 const products = [
   // ==================== 1. النباتات (plants) ====================
-  { id: 1, category: 'plants', name: 'الأقحوان الشجيرى', sizes: [{ size: 'نبات طبيعي', price: '35 ريال' }], desc: 'يزدهر في الشمس الكاملة، وهو ما يساعده على إنتاج غزير للزهور .', img: p1 },
-  { id: 2, category: 'plants', name: 'البقس', sizes: [{ size: 'نبات طبيعي', price: '220 ريال' }], desc: 'شجيرة زينة دائمة الخضرة تتميز بأوراق كثيفة صغيرة، مثالية للتشكيل والديكورات.', img: p2 },
-  { id: 3, category: 'plants', name: 'السيكاس ', sizes: [{ size: 'نبات طبيعي', price: '300 ريال' }], desc: 'نموها بطيء جدا مما يجعلها ثمينة، تتحمل الحرارة والبرودة، وتفضل الأماكن الواسعة لتبرز جمالها .', img: p3 },
-  { id: 4, category: 'plants', name: ' باكيرا ', sizes: [{ size: 'نبات داخلي', price: '250 ريال' }], desc: 'نبات زينة أنيق يعرف بشجرة المال، يتميز بسهولة العناية به ويتميز بسهولة العناية به .', img: p4 },
-  { id: 5, category: 'plants', name: 'بيتوسبوروم مبرقش (ايفونيموس) ', sizes: [{ size: 'نبات طبيعي', price: '250 ريال' }], desc: 'هو نبات مرن يزدهر في الشمس المباشرة أو الظل الجزئي، ويحتاج إلى ري متوسط عند جفاف التربة مع ضرورة وجود صرف جيد للمياه لتجنب تعفن الجذور .', img: p5 },
-  { id: 6, category: 'plants', name: 'جلد النمر ', sizes: [{ size: 'نبات داخلي', price: '50 ريال' }], desc: 'قوي جدا يتحمل قلة الضوء وقلة السقي، مثالي جدا لغرف النوم والمكاتب.', img: p6 },
-  { id: 7, category: 'plants', name: ' دراسينا مانسجيانا ', sizes: [{ size: 'نبات داخلي', price: '140 ريال' }], desc: 'نبات داخلي بامتياز، يحب الضوء الساطع غير المباشر، ولايحتاج للكثير من الماء؛ فهو يتحمل الإهمال قليلا.', img: p7 },
-  { id: 8, category: 'plants', name: 'فيكس باندا', sizes: [{ size: 'نبات طبيعي', price: '30 ريال' }], desc: 'هو شجرة زينة صغيرة بأوراق كثيفة لامعة، تتميز بسهولة العناية وتناسب الديكورات الداخلية والخارجية.', img: p10 },
-  { id: 9, category: 'plants', name: ' فيكس بنجامينا ', sizes: [{ size: 'نبات طبيعي', price: '230 ريال' }], desc: 'شجرة زينة أنيقة بأوراق خضراء متدلية، تضيف لمسة طبيعية جميلة وتناسب الأماكن الداخلية والخارجية مع عناية بسيطة.', img: p11 },
-  { id: 10, category: 'plants', name: ' فيكس بونساى', sizes: [{ size: 'شجرة زينة', price: '180 ريال' }], desc: 'تحتاج إلى ضوء ساطع، ورطوبة جوية (رش الأوراق برذاذ الماء)، وتنسيق بسيط للحفاظ على شكلها الجمالى.', img: p12 },
-  { id: 11, category: 'plants', name: 'فيكس جينسنج', sizes: [{ size: 'شجرة زينة', price: '130 ريال' }], desc: 'تحتاج إلى ضوء ساطع، ورطوبة جوية رش الأوراق برذاذ الماء، وتنسيق بسيط للحفاظ على شكلها الجمالى.', img: p13 },
-  { id: 12, category: 'plants', name: 'ليمون', sizes: [{ size: 'شجرة مثمرة', price: '50 ريال' }], desc: 'تنتج ليمون وتحتاج إلى شمس مباشرة (خارجية)، ري منتظم عند جفاف التربة، وتعتبر من الأشجار التي تضفى حيوية وطاقة إيجابية للمكان.', img: p14 },
-  { id: 13, category: 'plants', name: 'يوكا ثلاثية ', sizes: [{ size: 'نبات داخلي', price: '210 ريال' }], desc: 'تحب الإضاءة القوية، وتتحمل الجفاف بشكل رائع، لذا لا تفرط في سقيها.', img: p15 },
-  { id: 14, category: 'plants', name: 'سرو ليمونى', sizes: [{ size: 'نبات طبيعي', price: '250 ريال' }], desc: 'يفضل الأماكن الباردة والضوء القوي جدا، ويجب الحفاظ على تربته رطبة باستمرار دون إغراق.', img: p18 },
-  { id: 15, category: 'plants', name: ' فيكس ايلاستيكا', sizes: null, desc: 'تعشق الضوء الساطع "غير المباشر" (خلف نافذة)؛ فالإضاءة الضعيفة تجعل أوراقها تتساقط، والشمس المباشرة القوية جداً قد تحرق أطرافه .', img: p19 },
+  { id: 1, category: 'plants', name: 'الأقحوان الشجيرى', sizes: [{ size: 'نبات طبيعي', price: '35 SAR' }], desc: 'يزدهر في الشمس الكاملة، وهو ما يساعده على إنتاج غزير للزهور .', img: p1 },
+  { id: 2, category: 'plants', name: 'البقس', sizes: [{ size: 'نبات طبيعي', price: '220 SAR' }], desc: 'شجيرة زينة دائمة الخضرة تتميز بأوراق كثيفة صغيرة، مثالية للتشكيل والديكورات.', img: p2 },
+  { id: 3, category: 'plants', name: 'السيكاس ', sizes: [{ size: 'نبات طبيعي', price: '300 SAR' }], desc: 'نموها بطيء جدا مما يجعلها ثمينة، تتحمل الحرارة والبرودة، وتفضل الأماكن الواسعة لتبرز جمالها .', img: p3 },
+  { id: 4, category: 'plants', name: ' باكيرا ', sizes: [{ size: 'نبات داخلي', price: '250 SAR' }], desc: 'نبات زينة أنيق يعرف بشجرة المال، يتميز بسهولة العناية به ويتميز بسهولة العناية به .', img: p4 },
+  { id: 5, category: 'plants', name: 'بيتوسبوروم مبرقش (ايفونيموس) ', sizes: [{ size: 'نبات طبيعي', price: '250 SAR' }], desc: 'هو نبات مرن يزدهر في الشمس المباشرة أو الظل الجزئي، ويحتاج إلى ري متوسط عند جفاف التربة مع ضرورة وجود صرف جيد للمياه لتجنب تعفن الجذور .', img: p5 },
+  { id: 6, category: 'plants', name: 'جلد النمر ', sizes: [{ size: 'نبات داخلي', price: '50 SAR' }], desc: 'قوي جدا يتحمل قلة الضوء وقلة السقي، مثالي جدا لغرف النوم والمكاتب.', img: p6 },
+  { id: 7, category: 'plants', name: ' دراسينا مانسجيانا ', sizes: [{ size: 'نبات داخلي', price: '140 SAR' }], desc: 'نبات داخلي بامتياز، يحب الضوء الساطع غير المباشر، ولايحتاج للكثير من الماء؛ فهو يتحمل الإهمال قليلا.', img: p7 },
+  { id: 8, category: 'plants', name: 'فيكس باندا', sizes: [{ size: 'نبات طبيعي', price: '30 SAR' }], desc: 'هو شجرة زينة صغيرة بأوراق كثيفة لامعة، تتميز بسهولة العناية وتناسب الديكورات الداخلية والخارجية.', img: p10 },
+  { id: 9, category: 'plants', name: ' فيكس بنجامينا ', sizes: [{ size: 'نبات طبيعي', price: '230 SAR' }], desc: 'شجرة زينة أنيقة بأوراق خضراء متدلية، تضيف لمسة طبيعية جميلة وتناسب الأماكن الداخلية والخارجية مع عناية بسيطة.', img: p11 },
+  { id: 10, category: 'plants', name: ' فيكس بونساى', sizes: [{ size: 'شجرة زينة', price: '180 SAR' }], desc: 'تحتاج إلى ضوء ساطع، ورطوبة جوية (رش الأوراق برذاذ الماء)، وتنسيق بسيط للحفاظ على شكلها الجمالى.', img: p12 },
+  { id: 11, category: 'plants', name: 'فيكس جينسنج', sizes: [{ size: 'شجرة زينة', price: '130 SAR' }], desc: 'تحتاج إلى ضوء ساطع، ورطوبة جوية رش الأوراق برذاذ الماء، وتنسيق بسيط للحفاظ على شكلها الجمالى.', img: p13 },
+  { id: 12, category: 'plants', name: 'ليمون', sizes: [{ size: 'شجرة مثمرة', price: '50 SAR' }], desc: 'تنتج ليمون وتحتاج إلى شمس مباشرة (خارجية)، ري منتظم عند جفاف التربة، وتعتبر من الأشجار التي تضفى حيوية وطاقة إيجابية للمكان.', img: p14 },
+  { id: 13, category: 'plants', name: 'يوكا ثلاثية ', sizes: [{ size: 'نبات داخلي', price: '210 SAR' }], desc: 'تحب الإضاءة القوية، وتتحمل الجفاف بشكل رائع، لذا لا تفرط في سقيها.', img: p15 },
+  { id: 14, category: 'plants', name: 'سرو ليمونى', sizes: [{ size: 'نبات طبيعي', price: '250 SAR' }], desc: 'يفضل الأماكن الباردة والضوء القوي جدا، ويجب الحفاظ على تربته رطبة باستمرار دون إغراق.', img: p18 },
+  { id: 15, category: 'plants', name: ' فيكس ايلاستيكا', sizes: [{ size:  'شجرة زينة', price: '90 SAR' }], desc: 'تعشق الضوء الساطع "غير المباشر" (خلف نافذة)؛ فالإضاءة الضعيفة تجعل أوراقها تتساقط، والشمس المباشرة القوية جداً قد تحرق أطرافه .', img: p19 },
 
   // ==================== 2. تشكيلة ليف (leaf) ====================
-  { id: 16, category: 'leaf', name: ' روكن ورقة الشجر', sizes: [{ size: '30DX25H', price: '120 ريال' }, { size: '39DX32H', price: '180 ريال' }], img: pot36 },
-  { id: 40, category: 'leaf', name: 'روكن ليف كيوب', sizes: [{ size: '29L X 29 W X 25H', price: '120 ريال' }, { size: '38L X38 W X 32 H', price: '210 ريال' }], img: pot17 },
-  { id: 19, category: 'leaf', name: 'مود الطبيعة', sizes: [{ size: '30DX25H', price: '120 ريال' }, { size: '39DX32H', price: '200 ريال' }], img: pot31 },
-  { id: 33, category: 'leaf', name: 'روكن وود ناتشور', sizes: [{ size: '29DX28H', price: '210 ريال' }, { size: '39DX39H', price: '310 ريال' }], img: pot21 },
-  { id: 21, category: 'leaf', name: 'مود المربع الكبير', sizes: [{ size: 'H 39 W X 39 39L X', price: '390 ريال' }, { size: '35L X 35 W X 55 H', price: '460 ريال' }], img: pot33 },
-  { id: 23, category: 'leaf', name: 'مود المستطيل الكبير', sizes: [{ size: '99L X 39 W X 39 H', price: '800 ريال' }, { size: '99L X 39 W X 39 H', price: '900 ريال' }], img: pot35 },
+  { id: 16, category: 'leaf', name: ' روكن ورقة الشجر', sizes: [{ size: '30DX25H', price: '120 SAR' }, { size: '39DX32H', price: '180 SAR' }], img: pot36 },
+  { id: 40, category: 'leaf', name: 'روكن ليف كيوب', sizes: [{ size: '29L X 29 W X 25H', price: '120 SAR' }, { size: '38L X38 W X 32 H', price: '210 SAR' }], img: pot17 },
+  { id: 19, category: 'leaf', name: 'مود الطبيعة', sizes: [{ size: '30DX25H', price: '120 SAR' }, { size: '39DX32H', price: '200 SAR' }], img: pot31 },
+  { id: 33, category: 'leaf', name: 'روكن وود ناتشور', sizes: [{ size: '29DX28H', price: '210 SAR' }, { size: '39DX39H', price: '310 SAR' }], img: pot21 },
+  { id: 21, category: 'leaf', name: 'مود المربع الكبير', sizes: [{ size: 'H 39 W X 39 39L X', price: '390 SAR' }, { size: '35L X 35 W X 55 H', price: '460 SAR' }], img: pot33 },
+  { id: 23, category: 'leaf', name: 'مود المستطيل الكبير', sizes: [{ size: '99L X 39 W X 39 H', price: '800 SAR' }, { size: '99L X 39 W X 39 H', price: '900 SAR' }], img: pot35 },
 
   // ==================== 3. تشكيلة نيتشور (nature) ====================
-  { id: 26, category: 'nature', name: 'روكن الموج الأبيض', sizes: [{ size: '30DX25H', price: '190 ريال' }], img: pot2 },
-  { id: 27, category: 'nature', name: 'روكن الموج الأسود', sizes: [{ size: '45DX51H', price: '250 ريال' }], img: pot3 },
-  { id: 28, category: 'nature', name: 'روكن بامبو', sizes: [{ size: '41DX27H', price: '120 ريال' }], img: pot6 },
-  { id: 49, category: 'nature', name: 'روكن خطوط', sizes: [{ size: '31DX32H', price: '150 ريال' }], img: pot10 },
-  { id: 25, category: 'nature', name: 'روكن إعصار', sizes: [{ size: '49DX40H', price: '260 ريال' }], img: pot1 },
-  { id: 31, category: 'nature', name: 'روكن بابلز', sizes: [{ size: '23DX17H', price: '180 ريال' }], img: pot5 },
-  { id: 37, category: 'nature', name: 'روكن صخر', sizes: [{ size: '40DX30H', price: '200 ريال' }, { size: '55DX41H', price: '320 ريال' }], img: pot27 },
-  { id: 35, category: 'nature', name: 'روكن برايل', sizes: [{ size: '23DX24H', price: '120 ريال' }, { size: '30DX30H', price: '170 ريال' }], img: pot23 },
-  { id: 34, category: 'nature', name: 'روكن جرة', sizes: [{ size: '28DX22H', price: '75 ريال' }  , { size: '38DX33H', price: '120 ريال' }], img: pot24 },
-  { id: 38, category: 'nature', name: 'روكن شعاع', sizes: [{ size: '44DX45H', price: '250 ريال' }], img: pot26 },
-  { id: 32, category: 'nature', name: 'روكن خرز', sizes: [{ size: '21DX21H', price: '175 ريال' }, { size: '17DX17H', price: '120 ريال' }], img: pot25 },
-  { id: 36, category: 'nature', name: 'روكن بحر', sizes: [{ size: '41DX25H', price: '200 ريال' }], img: pot22 },
-  { id: 52, category: 'nature', name: 'روكن دوامة ', sizes: [{ size: '36LX34XWX13H', price: '150 ريال' }], img: pot11 },
-  { id: 41, category: 'nature', name: 'روكن صدفة', sizes: [{ size: '49LX32WX29H', price: '320 ريال' }], img: pot28 },
-  { id: 39, category: 'nature', name: 'روكن كأس', sizes: [{ size: '16DX23H', price: '140 ريال' }], img: pot29 },
-  { id: 44, category: 'nature', name: 'روكن كيرف', sizes: [{ size: '36LX33WX25H', price: '100 ريال' }], img: pot16 },
-  { id: 29, category: 'nature', name: 'روكن محيط', sizes: [{ size: '50DX20H', price: '200 ريال' }], img: pot30 },
+  { id: 26, category: 'nature', name: 'روكن الموج الأبيض', sizes: [{ size: '30DX25H', price: '190 SAR' }], img: pot2 },
+  { id: 27, category: 'nature', name: 'روكن الموج الأسود', sizes: [{ size: '45DX51H', price: '250 SAR' }], img: pot3 },
+  { id: 28, category: 'nature', name: 'روكن بامبو', sizes: [{ size: '41DX27H', price: '120 SAR' }], img: pot6 },
+  { id: 49, category: 'nature', name: 'روكن خطوط', sizes: [{ size: '31DX32H', price: '150 SAR' }], img: pot10 },
+  { id: 25, category: 'nature', name: 'روكن إعصار', sizes: [{ size: '49DX40H', price: '260 SAR' }], img: pot1 },
+  { id: 31, category: 'nature', name: 'روكن بابلز', sizes: [{ size: '23DX17H', price: '180 SAR' }], img: pot5 },
+  { id: 37, category: 'nature', name: 'روكن صخر', sizes: [{ size: '40DX30H', price: '200 SAR' }, { size: '55DX41H', price: '320 SAR' }], img: pot27 },
+  { id: 35, category: 'nature', name: 'روكن برايل', sizes: [{ size: '23DX24H', price: '120 SAR' }, { size: '30DX30H', price: '170 SAR' }], img: pot23 },
+  { id: 34, category: 'nature', name: 'روكن جرة', sizes: [{ size: '28DX22H', price: '75 SAR' }  , { size: '38DX33H', price: '120 SAR' }], img: pot24 },
+  { id: 38, category: 'nature', name: 'روكن شعاع', sizes: [{ size: '44DX45H', price: '250 SAR' }], img: pot26 },
+  { id: 32, category: 'nature', name: 'روكن خرز', sizes: [{ size: '21DX21H', price: '175 SAR' }, { size: '17DX17H', price: '120 SAR' }], img: pot25 },
+  { id: 36, category: 'nature', name: 'روكن بحر', sizes: [{ size: '41DX25H', price: '200 SAR' }], img: pot22 },
+  { id: 52, category: 'nature', name: 'روكن دوامة ', sizes: [{ size: '36LX34XWX13H', price: '150 SAR' }], img: pot11 },
+  { id: 41, category: 'nature', name: 'روكن صدفة', sizes: [{ size: '49LX32WX29H', price: '320 SAR' }], img: pot28 },
+  { id: 39, category: 'nature', name: 'روكن كأس', sizes: [{ size: '16DX23H', price: '140 SAR' }], img: pot29 },
+  { id: 44, category: 'nature', name: 'روكن كيرف', sizes: [{ size: '36LX33WX25H', price: '100 SAR' }], img: pot16 },
+  { id: 29, category: 'nature', name: 'روكن محيط', sizes: [{ size: '50DX20H', price: '200 SAR' }], img: pot30 },
 
   // ==================== 4. تشكيلة فيلا (الألوان الدقيقة لكل عنصر من الـ 11 بناءً على السكرينات) ====================
   // ==================== 4. تشكيلة فيلا ====================
 
 { id: 24, category: 'villa', name: 'روكن مينى',
   colors: [C.white,C.black,C.red,C.yellow,C.lightGrey,C.pink,C.beige,C.brown,C.orange,C.darkBlue,C.grey],
-  sizes: [{ size: '35DX33H', price: '260 ريال' }],
+  sizes: [{ size: '35DX33H', price: '260 SAR' }],
   img: pot20
 },
 
 { id: 18, category: 'villa', name: 'روكن ماكسى',
   colors: [C.white,C.black,C.red,C.yellow,C.lightGrey,C.beige,C.brown,C.darkBlue,C.grey],
-  sizes: [{ size: '42DX40H', price: '350 ريال' }],
+  sizes: [{ size: '42DX40H', price: '350 SAR' }],
   img: pot18
 },
 
 { id: 43, category: 'villa', name: 'روكن منتا',
   colors: [C.white,C.black,C.red,C.yellow,C.lightGrey,C.beige,C.brown,C.darkBlue,C.grey],
-  sizes: [{ size: '50DX47H', price: '630 ريال' }],
+  sizes: [{ size: '50DX47H', price: '630 SAR' }],
   img: pot19
 },
 
 { id: 45, category: 'villa', name: 'روكن كاميتا',
   colors: [C.white,C.black,C.red,C.yellow,C.lightGrey,C.beige,C.brown,C.darkBlue,C.grey],
-  sizes: [{ size: '60DX56H', price: '650 ريال' }],
+  sizes: [{ size: '60DX56H', price: '650 SAR' }],
   img: pot15
 },
 
 { id: 47, category: 'villa', name: 'روكن انجولو',
   colors: [C.white,C.black,C.red,C.brown,C.beige,C.darkBlue,C.grey],
-  sizes: [{ size: '40LX40WX75H', price: '650 ريال' }],
+  sizes: [{ size: '40LX40WX75H', price: '650 SAR' }],
   img: pot4
 },
 
 { id: 51, category: 'villa', name: 'روكن كالستو',
   colors: [C.white,C.black,C.red,C.orange,C.yellow,C.lightGrey,C.pink,C.beige,C.brown,C.darkBlue,C.grey],
-  sizes: [{ size: '31LX31WX56H', price: '380 ريال' }],
+  sizes: [{ size: '31LX31WX56H', price: '380 SAR' }],
   img: pot13
 },
 
 { id: 50, category: 'villa', name: 'روكن بيكو',
   colors: [C.white,C.black,C.brown,C.beige,C.darkBlue],
-  sizes: [{ size: '40LX40WX75H', price: '500 ريال' }],
+  sizes: [{ size: '40LX40WX75H', price: '500 SAR' }],
   img: pot7
 },
 
 { id: 53, category: 'villa', name: 'روكن توندو',
   colors: [C.white,C.black,C.red,C.brown,C.beige,C.darkBlue,C.grey],
-  sizes: [{ size: '40DX75H', price: '620 ريال' }],
+  sizes: [{ size: '40DX75H', price: '620 SAR' }],
   img: pot8
 },
 
 { id: 30, category: 'villa', name: 'روكن كاريا',
   colors: [C.white,C.black,C.red,C.brown,C.beige,C.darkBlue,C.grey],
-  sizes: [{ size: '50LX50WX47H', price: '620 ريال' }],
+  sizes: [{ size: '50LX50WX47H', price: '620 SAR' }],
   img: pot12
 },
 
 { id: 46, category: 'villa', name: 'روكن كامنثا',
   colors: [C.white,C.black,C.red,C.brown,C.beige,C.darkBlue,C.grey],
-  sizes: [{ size: '60LX60WX57H', price: '750 ريال' }],
+  sizes: [{ size: '60LX60WX57H', price: '750 SAR' }],
   img: pot14
 },
 
 { id: 48, category: 'villa', name: 'روكن جاردينيا',
   colors: [C.white,C.black,C.red,C.brown,C.grey],
-  sizes: [{ size: '80LX31WX45H', price: '560 ريال' }],
+  sizes: [{ size: '80LX31WX45H', price: '560 SAR' }],
   img: pot9
 },
 ];

@@ -13,9 +13,9 @@ import './Magic.css';
 import './ServicePage.css';
 
 const magicProducts = [
-  { id: 1, name: 'الاصيص الدوار', price: 260, image: flowerImg },
-  { id: 2, name: 'الكشاف الدوار ', price: 260, image: monImg },
-  { id: 3, name: 'حوض مضئ', price: 800, image: potImg }, // إضافة المنتج الثالث هنا (تقدر تغير الاسم أو السعر براحتك)
+  { id: 1, name: 'الاصيص الدوار ', desc: 'تحب الإضاءة القوية، وتتحمل الجفاف بشكل رائع، لذا لا تفرط في سقيها.', price: 260, image: flowerImg },
+  { id: 2, name: 'الكشاف الدوار ', desc: 'تحب الإضاءة القوية، وتتحمل الجفاف بشكل رائع، لذا لا تفرط في سقيها.', price: 260, image: monImg },
+  { id: 3, name: 'حوض مضئ', desc: 'تحب الإضاءة القوية، وتتحمل الجفاف بشكل رائع، لذا لا تفرط في سقيها.', price: 800, image: potImg }, // إضافة المنتج الثالث هنا (تقدر تغير الاسم أو السعر براحتك)
 ];
 
 function Magic() {
@@ -63,8 +63,11 @@ function Magic() {
               </div>
               <div className="magic-details">
                 <h3>{product.name}</h3>
-                <p className="magic-price">{product.price} ريال</p>
-<a href={`https://wa.me/966592001640?text=${encodeURIComponent('السلام عليكم، أريد الاستفسار عن: ' + product.name)}`} target="_blank" rel="noreferrer" className="btn-order">                  اطلب الآن
+                <p className="magic-desc">
+                  {product.desc}
+                </p>
+                <p className="magic-price">{product.price}  SAR </p>
+                <a href={`https://wa.me/966592001640?text=${encodeURIComponent('السلام عليكم، أريد الاستفسار عن: ' + product.name)}`} target="_blank" rel="noreferrer" className="btn-order">                  اطلب الآن
                 </a>
               </div>
             </article>
