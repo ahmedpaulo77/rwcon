@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 
+import ScrollToTop from './ScrollToTop';
+
 import Home from './pages/Home';
 import Pools from './pages/Pools';
 import Fountains from './pages/Fountains';
@@ -13,9 +15,12 @@ import Contact from './pages/Contact';
 import Magic from './pages/Magic';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
     <HashRouter>
+      <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pools" element={<Pools />} />
