@@ -1,21 +1,39 @@
-import { useState } from 'react';
-import Navbar from '../Components/Navbar';
-import Footer from '../Components/Footer';
-import PageHero from '../Components/PageHero';
-import WhatsAppFab from '../Components/WhatsAppFab';
+import { useState } from "react";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
+import PageHero from "../Components/PageHero";
+import WhatsAppFab from "../Components/WhatsAppFab";
 
 // استيراد الصور القديمة والجديدة
-import flowerImg from '../images/flower.png';
-import monImg from '../images/mon.png';
-import potImg from '../images/pot.png'; // إستيراد الصورة الجديدة هنا
+import flowerImg from "../images/flower.png";
+import monImg from "../images/mon.png";
+import potImg from "../images/pot.png"; // إستيراد الصورة الجديدة هنا
 
-import './Magic.css';
-import './ServicePage.css';
+import "./Magic.css";
+import "./ServicePage.css";
 
 const magicProducts = [
-  { id: 1, name: 'الاصيص الدوار ', desc: 'تحب الإضاءة القوية، وتتحمل الجفاف بشكل رائع، لذا لا تفرط في سقيها.', price: 260, image: flowerImg },
-  { id: 2, name: 'الكشاف الدوار ', desc: 'تحب الإضاءة القوية، وتتحمل الجفاف بشكل رائع، لذا لا تفرط في سقيها.', price: 260, image: monImg },
-  { id: 3, name: 'حوض مضئ', desc: 'تحب الإضاءة القوية، وتتحمل الجفاف بشكل رائع، لذا لا تفرط في سقيها.', price: 800, image: potImg }, // إضافة المنتج الثالث هنا (تقدر تغير الاسم أو السعر براحتك)
+  {
+    id: 1,
+    name: "الاصيص الدوار ",
+    desc: "تأصيص نباتات طائر يعتمد على تقنية المغناطيس ليدور في الهواء بشكل انسيابي ومبهر، ليضيف لمسة عصرية وفخمة لأي مكان يوضع فيه..",
+    price: 260,
+    image: flowerImg,
+  },
+  {
+    id: 2,
+    name: "الكشاف الدوار ",
+    desc: "حوض نباتات بتصميم عصري راقٍ مزود بإضاءة LED خافتة ومميزة، ليعطي مكاناً دافئاً وجذاباً لنباتاتك المفضلة ليلاً ونهاراً..",
+    price: 260,
+    image: monImg,
+  },
+  {
+    id: 3,
+    name: "حوض مضئ",
+    desc: "اضاءة LED.",
+    sizes: [{ size: "91LX20WX126H", price: "190 SAR" }],
+    image: potImg,
+  }, // إضافة المنتج الثالث هنا (تقدر تغير الاسم أو السعر براحتك)
 ];
 
 function Magic() {
@@ -63,11 +81,16 @@ function Magic() {
               </div>
               <div className="magic-details">
                 <h3>{product.name}</h3>
-                <p className="magic-desc">
-                  {product.desc}
-                </p>
-                <p className="magic-price">{product.price}  SAR </p>
-                <a href={`https://wa.me/966592001640?text=${encodeURIComponent('السلام عليكم، أريد الاستفسار عن: ' + product.name)}`} target="_blank" rel="noreferrer" className="btn-order">                  اطلب الآن
+                <p className="magic-desc">{product.desc}</p>
+                <p className="magic-price">{product.price} SAR </p>
+                <a
+                  href={`https://wa.me/966592001640?text=${encodeURIComponent("السلام عليكم، أريد الاستفسار عن: " + product.name)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-order"
+                >
+                  {" "}
+                  اطلب الآن
                 </a>
               </div>
             </article>
@@ -77,21 +100,44 @@ function Magic() {
 
       {/* نافذة التكبير السحرية بالأسهم */}
       {currentImgIndex !== null && (
-        <div className="lightbox-overlay" onClick={() => setCurrentImgIndex(null)}>
-          <button className="lightbox-close" onClick={() => setCurrentImgIndex(null)}>&times;</button>
+        <div
+          className="lightbox-overlay"
+          onClick={() => setCurrentImgIndex(null)}
+        >
+          <button
+            className="lightbox-close"
+            onClick={() => setCurrentImgIndex(null)}
+          >
+            &times;
+          </button>
 
-          <button className="lightbox-arrow lightbox-arrow--left" onClick={showPrevImg}>&#10094;</button>
+          <button
+            className="lightbox-arrow lightbox-arrow--left"
+            onClick={showPrevImg}
+          >
+            &#10094;
+          </button>
 
-          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="lightbox-content"
+            onClick={(e) => e.stopPropagation()}
+          >
             <img
               src={magicProducts[currentImgIndex].image}
               alt={magicProducts[currentImgIndex].name}
               className="lightbox-img"
             />
-            <div className="lightbox-caption">{magicProducts[currentImgIndex].name}</div>
+            <div className="lightbox-caption">
+              {magicProducts[currentImgIndex].name}
+            </div>
           </div>
 
-          <button className="lightbox-arrow lightbox-arrow--right" onClick={showNextImg}>&#10095;</button>
+          <button
+            className="lightbox-arrow lightbox-arrow--right"
+            onClick={showNextImg}
+          >
+            &#10095;
+          </button>
         </div>
       )}
 
