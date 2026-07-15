@@ -82,7 +82,21 @@ function Magic() {
               <div className="magic-details">
                 <h3>{product.name}</h3>
                 <p className="magic-desc">{product.desc}</p>
-                <p className="magic-price">{product.price} SAR </p>
+                
+                {/* عرض السعر أو الأحجام والأسعار بناءً على بيانات المنتج */}
+                {product.sizes ? (
+                  <div className="magic-sizes-container">
+                    {product.sizes.map((item, idx) => (
+                      <div key={idx} className="magic-size-row">
+                        <span className="magic-size-tag">المقاس: {item.size}</span>
+                        <p className="magic-price">{item.price}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="magic-price">{product.price} SAR</p>
+                )}
+
                 <a
                   href={`https://wa.me/966592001640?text=${encodeURIComponent("السلام عليكم، أريد الاستفسار عن: " + product.name)}`}
                   target="_blank"
