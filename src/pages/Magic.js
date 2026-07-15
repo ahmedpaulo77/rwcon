@@ -31,7 +31,7 @@ const magicProducts = [
     id: 3,
     name: "حوض مضئ",
     desc: "اضاءة LED.",
-    sizes: [{ size: "91LX20WX126H", price: "190 SAR" }],
+    sizes: [{ size: "91LX20WX126H", price: "800 SAR" }],
     image: potImg,
   }, // إضافة المنتج الثالث هنا (تقدر تغير الاسم أو السعر براحتك)
 ];
