@@ -2,7 +2,7 @@
   "name": "rwcon",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ahmedpaulo77.github.io/rwcon",
+  "homepage": ".",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
@@ -16,7 +16,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-"start": "SET HOST=0.0.0.0&& react-scripts start",
+    "start": "SET HOST=0.0.0.0&& react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
