@@ -83,19 +83,23 @@ function Magic() {
                 <h3>{product.name}</h3>
                 <p className="magic-desc">{product.desc}</p>
                 
-                {/* عرض السعر أو الأحجام والأسعار بناءً على بيانات المنتج */}
-                {product.sizes ? (
-                  <div className="magic-sizes-container">
-                    {product.sizes.map((item, idx) => (
-                      <div key={idx} className="magic-size-row">
-                        <span className="magic-size-tag">المقاس: {item.size}</span>
-                        <p className="magic-price">{item.price}</p>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="magic-price">{product.price} SAR</p>
-                )}
+                {/* عرض السعر أو المقاس والسعر متوازيين في نفس السطر */}
+                <div style={{ minHeight: "40px", display: "flex", alignItems: "center" }}>
+                  {product.sizes ? (
+                    <div style={{ display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center" }}>
+                      <span style={{ fontSize: "14px", color: "#666", fontWeight: "bold" }}>
+                        {product.sizes[0].size}
+                      </span>
+                      <p className="magic-price" style={{ margin: 0 }}>
+                        {product.sizes[0].price}
+                      </p>
+                    </div>
+                  ) : (
+                    <p className="magic-price" style={{ margin: 0 }}>
+                      {product.price} SAR
+                    </p>
+                  )}
+                </div>
 
                 <a
                   href={`https://wa.me/966592001640?text=${encodeURIComponent("السلام عليكم، أريد الاستفسار عن: " + product.name)}`}
