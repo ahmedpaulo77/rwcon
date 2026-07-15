@@ -31,16 +31,22 @@
   box-shadow: var(--shadow-lg);
 }
 
+/* التعديل هنا: إضافة flex وتوسيط محاذاة الصورة */
 .magic-img-container {
   width: 100%;
   height: 220px;
   overflow: hidden;
+  background-color: #fbfbfb; /* خلفية هادئة لملء الفراغات الجانبية إن وجدت */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* التعديل هنا: تغيير object-fit إلى contain لتبتعد عن قص أطراف الصور */
 .magic-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; 
   transition: transform 0.4s ease;
 }
 
