@@ -23,7 +23,7 @@ const magicProducts = [
   {
     id: 2,
     name: "الكشاف الدوار ",
-    desc: "حوض نباتات بتصميم عصري راقٍ",
+    desc: "كشاف طائر بألوان متغيرة",
     price: 260,
     image: monImg,
   },
