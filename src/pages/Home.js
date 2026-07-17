@@ -13,18 +13,17 @@ import magicImg from '../images/img13.jpeg';     // صورة لقسم ماجيك
 import contractingImg from '../images/82.jpg';   // صورة لقسم المقاولات
 
 // استيراد 7 صور مختلفة لخلفيات الكرسول المتغيرة (عدل أسماء الملفات براحتك)
-import bgHero1 from '../images/73.jpg';
+import bgHero1 from '../images/W.jpg';
 import bgHero2 from '../images/84.jpg';
 import bgHero3 from '../images/hero.jpg';
 import bgHero4 from '../images/72.jpg';
 import bgHero5 from '../images/200.jpg';
-import bgHero6 from '../images/150.jpg';
-import bgHero7 from '../images/img13.jpeg';
+
 
 import './Home.css';
 
 // مصفوفة تحتوي على الـ 7 صور الجديدة
-const CAROUSEL_BACKGROUNDS = [bgHero1, bgHero2, bgHero3, bgHero4, bgHero5, bgHero6, bgHero7];
+const CAROUSEL_BACKGROUNDS = [bgHero1, bgHero2, bgHero3, bgHero4, bgHero5];
 
 const SERVICES = [
   {
