@@ -12,16 +12,19 @@ import plantsImg from '../images/150.jpg';     // صورة للمزروعات و
 import magicImg from '../images/img13.jpeg';     // صورة لقسم ماجيك
 import contractingImg from '../images/82.jpg';   // صورة لقسم المقاولات
 
-// استيراد صور الكرسول (الخلفيات المتبدلة للهيرو)
+// استيراد 7 صور مختلفة لخلفيات الكرسول المتغيرة (عدل أسماء الملفات براحتك)
 import bgHero1 from '../images/hero.jpg';
 import bgHero2 from '../images/111.jpg';
 import bgHero3 from '../images/m.jpg';
 import bgHero4 from '../images/82.jpg';
+import bgHero5 from '../images/200.jpg';
+import bgHero6 from '../images/150.jpg';
+import bgHero7 from '../images/img13.jpeg';
 
 import './Home.css';
 
-// مصفوفة صور الكرسول
-const CAROUSEL_BACKGROUNDS = [bgHero1, bgHero2, bgHero3, bgHero4];
+// مصفوفة تحتوي على الـ 7 صور الجديدة
+const CAROUSEL_BACKGROUNDS = [bgHero1, bgHero2, bgHero3, bgHero4, bgHero5, bgHero6, bgHero7];
 
 const SERVICES = [
   {
@@ -71,7 +74,7 @@ const SERVICES = [
 function Home() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
-  // تبديل الصور تلقائياً كل 4 ثوانٍ
+  // تبديل الصور الـ 7 تلقائياً كل 4 ثوانٍ
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBgIndex((prevIndex) => (prevIndex + 1) % CAROUSEL_BACKGROUNDS.length);
@@ -84,7 +87,7 @@ function Home() {
     <div className="page page--home">
       <Navbar />
 
-      {/* قسم الـ Hero مع خلفيات الكرسول المتغيرة */}
+      {/* قسم الـ Hero مع الـ 7 خلفيات وبدون النقاط السفلية */}
       <section className="hero">
         <div className="hero__carousel-container">
           {CAROUSEL_BACKGROUNDS.map((bgImage, index) => (
@@ -118,18 +121,6 @@ function Home() {
               ABOUT US
             </Link>
           </div>
-        </div>
-
-        {/* مؤشرات النقاط لـ التبديل اليدوي أو معرفة الصورة الحالية */}
-        <div className="hero__carousel-dots">
-          {CAROUSEL_BACKGROUNDS.map((_, index) => (
-            <button
-              key={index}
-              className={`hero__carousel-dot ${index === currentBgIndex ? 'active' : ''}`}
-              onClick={() => setCurrentBgIndex(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
         </div>
       </section>
 

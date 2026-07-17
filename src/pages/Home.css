@@ -30,7 +30,7 @@
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 1.2s ease-in-out; /* حركة ناعمة ومريحة للعين أثناء التبديل */
+  transition: opacity 1.2s ease-in-out;
 }
 
 .hero__bg-slide.active {
@@ -139,33 +139,6 @@
   color: var(--white);
 }
 
-/* نقاط التحكم السفلية للكرسول (Dots) */
-.hero__carousel-dots {
-  position: absolute;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 3;
-}
-
-.hero__carousel-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
-  padding: 0;
-}
-
-.hero__carousel-dot.active {
-  background: var(--accent);
-  transform: scale(1.2);
-}
-
 /* Services */
 .services-preview {
   padding: 4rem 1.25rem 3rem;
@@ -242,7 +215,7 @@
 .service-card--pools { --card-accent: #0284c7; }
 .service-card--fountains { --card-accent: #0d9488; }
 .service-card--landscape { --card-accent: #6b8f4e; }
-.service-card--contracting { --card-accent: #1f3325; } /* لون كرت المقاولات الجديد الزيتي المعماري الفخم */
+.service-card--contracting { --card-accent: #1f3325; }
 .service-card--plants { --card-accent: #4a7c59; }
 .service-card--magic { --card-accent: #d97706; }
 
@@ -321,9 +294,9 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 280px; /* طول الكارد ليعطي مساحة ممتازة للصورة */
+  min-height: 280px;
   display: flex;
-  align-items: flex-end; /* جعل النصوص في أسفل الكارد */
+  align-items: flex-end;
   padding: 25px;
   border-radius: 16px;
   overflow: hidden;
@@ -332,7 +305,6 @@
   transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
 }
 
-/* طبقة الظل المتدرج داخل الكارد */
 .service-card__overlay {
   position: absolute;
   top: 0;
@@ -344,11 +316,10 @@
   transition: background 0.4s ease;
 }
 
-/* محتوى الكارد المستقر فوق الظل */
 .service-card__content {
   position: relative;
   z-index: 2;
-  color: #ffffff; /* نصوص بيضاء بالكامل لتظهر بوضوح فوق الصورة المظلمة */
+  color: #ffffff;
   text-align: right;
   width: 100%;
 }
@@ -369,13 +340,12 @@
 
 .service-card__link {
   font-size: 0.9rem;
-  color: #a7f3d0; /* لون أخضر فاتح ومريح للعين يعبر عن اللينك */
+  color: #a7f3d0;
   font-weight: bold;
   display: inline-block;
   transition: transform 0.3s ease;
 }
 
-/* تأثيرات حركة تفاعلية عند تمرير الماوس على الكارد */
 .service-card--full-bg:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
@@ -386,7 +356,7 @@
 }
 
 .service-card--full-bg:hover .service-card__link {
-  transform: translateX(-5px); /* تحريك السهم قليلاً ليسار لإعطاء إيحاء بالتفاعل */
+  transform: translateX(-5px);
 }
 
 @media (max-width: 768px) {
