@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react';
 import logo from '../images/logo.webp';
 import './Navbar.css';
 
+// ✅ تم إضافة "المقاولات العامة" هنا لتظهر في القائمة المنسدلة تلقائياً
 const SERVICE_LINKS = [
   { to: '/pools', label: 'المسابح' },
   { to: '/fountains', label: 'النوافير' },
   { to: '/landscape', label: 'اللاندسكيب' },
   { to: '/plants', label: 'المزروعات والأواني' },
   { to: '/magic', label: 'ماجيك' },
+  { to: '/contracting', label: 'المقاولات العامة' }, 
 ];
 
 function Navbar() {
