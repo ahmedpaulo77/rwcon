@@ -1,18 +1,27 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import WhatsAppFab from '../Components/WhatsAppFab';
-import heroImg from '../images/hero.jpg';
 
-// استيراد صور حية ومعبرة وكبيرة لكل خدمة
+// استيراد صور الخدمات
 import poolsImg from '../images/m.jpg';      // صورة للمسابح
 import fountainsImg from '../images/200.jpg';  // صورة للنوافير
 import landscapeImg from '../images/111.jpg';  // صورة للاندسكيب
 import plantsImg from '../images/150.jpg';     // صورة للمزروعات والأواني
 import magicImg from '../images/img13.jpeg';     // صورة لقسم ماجيك
-import contractingImg from '../images/82.jpg';   // استيراد صورة لقسم المقاولات (تأكد من وجودها أو اسم الصورة المتاحة)
+import contractingImg from '../images/82.jpg';   // صورة لقسم المقاولات
+
+// استيراد صور الكرسول (الخلفيات المتبدلة للهيرو)
+import bgHero1 from '../images/hero.jpg';
+import bgHero2 from '../images/111.jpg';
+import bgHero3 from '../images/m.jpg';
+import bgHero4 from '../images/82.jpg';
 
 import './Home.css';
+
+// مصفوفة صور الكرسول
+const CAROUSEL_BACKGROUNDS = [bgHero1, bgHero2, bgHero3, bgHero4];
 
 const SERVICES = [
   {
@@ -37,7 +46,7 @@ const SERVICES = [
     theme: 'landscape',
   },
   {
-    to: '/contracting', // التوجيه لصفحة المقاولات الجديدة
+    to: '/contracting',
     img: contractingImg,
     title: 'المقاولات العامة',
     desc: 'أعمال التشييد، الهياكل الإنشائية، وتطوير البنية التحتية',
@@ -60,12 +69,35 @@ const SERVICES = [
 ];
 
 function Home() {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+  // تبديل الصور تلقائياً كل 4 ثوانٍ
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % CAROUSEL_BACKGROUNDS.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="page page--home">
       <Navbar />
 
-      <section className="hero" style={{ backgroundImage: `url(${heroImg})` }}>
+      {/* قسم الـ Hero مع خلفيات الكرسول المتغيرة */}
+      <section className="hero">
+        <div className="hero__carousel-container">
+          {CAROUSEL_BACKGROUNDS.map((bgImage, index) => (
+            <div
+              key={index}
+              className={`hero__bg-slide ${index === currentBgIndex ? 'active' : ''}`}
+              style={{ backgroundImage: `url(${bgImage})` }}
+            />
+          ))}
+        </div>
+
         <div className="hero__overlay" aria-hidden />
+
         <div className="hero__content">
           <h1>
             نحول مساحتك إلى
@@ -87,6 +119,18 @@ function Home() {
             </Link>
           </div>
         </div>
+
+        {/* مؤشرات النقاط لـ التبديل اليدوي أو معرفة الصورة الحالية */}
+        <div className="hero__carousel-dots">
+          {CAROUSEL_BACKGROUNDS.map((_, index) => (
+            <button
+              key={index}
+              className={`hero__carousel-dot ${index === currentBgIndex ? 'active' : ''}`}
+              onClick={() => setCurrentBgIndex(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </section>
 
       <section className="services-preview">
@@ -104,7 +148,6 @@ function Home() {
               className={`service-card service-card--full-bg service-card--${theme}`}
               style={{ backgroundImage: `url(${img})` }}
             >
-              {/* طبقة الظل لضمان وضوح النصوص البيضاء فوق الصورة */}
               <div className="service-card__overlay" />
 
               <div className="service-card__content">
@@ -123,7 +166,7 @@ function Home() {
           <span>مشروع منفّذ</span>
         </div>
         <div className="home-trust__item">
-          <strong>6</strong> {/* تم تعديلها لـ 6 مجالات خدمة بعد إضافة المقاولات */}
+          <strong>6</strong>
           <span>مجالات خدمة</span>
         </div>
         <div className="home-trust__item">

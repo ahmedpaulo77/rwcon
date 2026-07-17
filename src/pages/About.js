@@ -34,7 +34,7 @@ function About() {
           </div>
 
           <div className="stat-card">
-            <h2>5</h2>
+            <h2>6</h2>
             <p>مجالات خدمة</p>
           </div>
         </div>
