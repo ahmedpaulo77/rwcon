@@ -13,6 +13,7 @@ import Plants from './pages/Plants';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Magic from './pages/Magic';
+import Contracting from './pages/Contracting'; // ✅ تم إضافة استيراد صفحة المقاولات هنا
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -30,6 +31,7 @@ root.render(
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/magic" element={<Magic />} />
+        <Route path="/contracting" element={<Contracting />} /> {/* ✅ تم إضافة مسار صفحة المقاولات هنا */}
       </Routes>
     </HashRouter>
   </React.StrictMode>
