@@ -9,6 +9,7 @@ const SERVICE_LINKS = [
   { to: '/landscape', label: 'اللاندسكيب' },
   { to: '/plants', label: 'المزروعات والأواني' },
   { to: '/magic', label: 'ماجيك' },
+  { to: '/Contracting', label: 'المقاولات العامة' },
 ];
 
 function Footer() {
@@ -19,7 +20,7 @@ function Footer() {
           <div className="footer-brand">
             <img src={logo} alt="RWCON" />
             <h3>شركة روكن للمقاولات</h3>
-            <p>حلول متكاملة للمساحات الخضراء، المسابح، النوافير واللاندسكيب في المملكة العربية السعودية.</p>
+            <p>حلول متكاملة للمساحات الخضراء،المسابح،النوافير،اللاندسكيب والمقاولات  في المملكة العربية السعودية.</p>
           </div>
 
           <div className="footer-col">
