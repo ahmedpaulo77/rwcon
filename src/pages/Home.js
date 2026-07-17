@@ -6,7 +6,7 @@ import WhatsAppFab from '../Components/WhatsAppFab';
 
 // استيراد صور الخدمات
 import poolsImg from '../images/m.jpg';      // صورة للمسابح
-import fountainsImg from '../images/200.jpg';  // صورة للنوافير
+import fountainsImg from '../images/85.jpg';  // صورة للنوافير
 import landscapeImg from '../images/111.jpg';  // صورة للاندسكيب
 import plantsImg from '../images/150.jpg';     // صورة للمزروعات والأواني
 import magicImg from '../images/img13.jpeg';     // صورة لقسم ماجيك
