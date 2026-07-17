@@ -10,6 +10,7 @@ import fountainsImg from '../images/200.jpg';  // صورة للنوافير
 import landscapeImg from '../images/111.jpg';  // صورة للاندسكيب
 import plantsImg from '../images/150.jpg';     // صورة للمزروعات والأواني
 import magicImg from '../images/img13.jpeg';     // صورة لقسم ماجيك
+import contractingImg from '../images/82.jpg';   // استيراد صورة لقسم المقاولات (تأكد من وجودها أو اسم الصورة المتاحة)
 
 import './Home.css';
 
@@ -34,6 +35,13 @@ const SERVICES = [
     title: 'اللاندسكيب',
     desc: 'تنسيق المساحات الخضراء والحدائق',
     theme: 'landscape',
+  },
+  {
+    to: '/contracting', // التوجيه لصفحة المقاولات الجديدة
+    img: contractingImg,
+    title: 'المقاولات العامة',
+    desc: 'أعمال التشييد، الهياكل الإنشائية، وتطوير البنية التحتية',
+    theme: 'contracting',
   },
   {
     to: '/plants',
@@ -64,8 +72,7 @@ function Home() {
             <span className="highlight"> تحفة طبيعية</span>
           </h1>
           <p>
-            متخصصون في تنسيق المساحات الخضراء، المسابح، النوافير واللاندسكيب
-            في المملكة العربية السعودية
+            متخصصون في تنسيق المساحات الخضراء، المسابح، النوافير، اللاندسكيب و المقاولات في المملكة العربية السعودية
           </p>
           <div className="hero__actions">
             <a href="https://wa.me/966592001640" target="_blank" rel="noreferrer" className="btn-primary btn-hero">
@@ -116,7 +123,7 @@ function Home() {
           <span>مشروع منفّذ</span>
         </div>
         <div className="home-trust__item">
-          <strong>5</strong>
+          <strong>6</strong> {/* تم تعديلها لـ 6 مجالات خدمة بعد إضافة المقاولات */}
           <span>مجالات خدمة</span>
         </div>
         <div className="home-trust__item">
