@@ -10,7 +10,7 @@ import fountainsImg from '../images/85.jpg';  // صورة للنوافير
 import landscapeImg from '../images/111.jpg';  // صورة للاندسكيب
 import plantsImg from '../images/150.jpg';     // صورة للمزروعات والأواني
 import magicImg from '../images/img13.jpeg';     // صورة لقسم ماجيك
-import contractingImg from '../images/82.jpg';   // صورة لقسم المقاولات
+import contractingImg from '../images/c4.jpeg';   // صورة لقسم المقاولات
 
 import bgHero1 from '../images/W.jpg';
 import bgHero2 from '../images/84.jpg';
