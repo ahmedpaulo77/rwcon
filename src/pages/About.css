@@ -1,5 +1,7 @@
 .about-main {
   padding-top: 0;
+  max-width: 1200px; /* لضمان عدم توسع المحتوى بشكل مبالغ فيه بالشاشات الكبيرة */
+  margin: 0 auto;
 }
 
 .stats-grid {
@@ -41,6 +43,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
+  margin-bottom: 4rem; /* مسافة مريحة قبل قسم العملاء */
 }
 
 @media (min-width: 600px) {
@@ -71,9 +74,9 @@
 }
 
 .value-icon {
-   height: 370px;
+  height: 370px;
   overflow: hidden;
- }
+}
 
 .value-icon img {
   width: 100%;
@@ -93,4 +96,60 @@
   font-size: 0.9rem;
   line-height: 1.7;
   padding: 0 1rem 1.5rem;
+}
+
+/* ========================================================================== */
+/* تنسيقات قسم العملاء المجمعة الجديد */
+/* ========================================================================== */
+.clients-section {
+  padding: 2rem 1rem 4rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  margin-bottom: 3rem;
+}
+
+.clients-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.clients-header h2 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--accent-dark);
+  margin-bottom: 0.5rem;
+}
+
+.clients-header .header-line {
+  width: 60px;
+  height: 4px;
+  background: var(--accent); /* أو اللون الرئيسي للبراند عندك */
+  margin: 0 auto 1rem;
+  border-radius: 2px;
+}
+
+.clients-header p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.clients-image-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--radius);
+  padding: 0.5rem;
+}
+
+.clients-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }

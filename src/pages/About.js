@@ -8,6 +8,9 @@ import eltzam from '../images/eltzam.jpg';
 import abtkar from '../images/abtkar.jpg';
 import seqa from '../images/seqa.jpg';
 
+// 1. استيراد صورة العملاء المجمعة الجديدة
+import clientsImg from '../images/clients.jpg'; 
+
 import './About.css';
 
 function About() {
@@ -22,6 +25,7 @@ function About() {
       />
 
       <main className="page-content about-main">
+        {/* قسم الأرقام والإحصائيات */}
         <div className="stats-grid">
           <div className="stat-card">
             <h2>+50</h2>
@@ -39,6 +43,7 @@ function About() {
           </div>
         </div>
 
+        {/* قسم قيم ومبادئ الشركة */}
         <div className="values-grid">
           <div className="value-card">
             <div className="value-icon">
@@ -72,6 +77,25 @@ function About() {
             <p>نبني علاقات طويلة الأمد مع عملائنا</p>
           </div>
         </div>
+
+        {/* ========================================================================== */}
+        {/* 2. قسم شركاء النجاح والعملاء المعتمدين */}
+        {/* ========================================================================== */}
+        <section className="clients-section">
+          <div className="clients-header">
+            <h2>شركاء النجاح</h2>
+            <div className="header-line"></div>
+            <p>فخورون بثقة كبرى الشركات والمؤسسات التي شاركنا في بناء وتطوير مشاريعها</p>
+          </div>
+          <div className="clients-image-wrapper">
+            <img 
+              src={clientsImg} 
+              alt="عملائنا وشركاء نجاح شركة روكن للمقاولات" 
+              className="clients-img" 
+            />
+          </div>
+        </section>
+
       </main>
 
       <Footer />
