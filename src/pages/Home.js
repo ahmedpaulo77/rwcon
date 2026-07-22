@@ -100,18 +100,14 @@ function useInView(threshold = 0.25) {
   return [ref, inView];
 }
 
-/* ─── Count Badge — رقم + bar ─── */
+/* ─── Count Badge — رقم فقط ─── */
 function ArcBadge({ count, countMax, countLabel, active }) {
   const displayCount = useCountUp(count, 1500, active);
-  const pct = active ? Math.round((displayCount / countMax) * 100) : 0;
 
   return (
     <div className="sc__badge">
       <span className="sc__badge-num">{displayCount}</span>
       <span className="sc__badge-lbl">{countLabel}</span>
-      <div className="sc__badge-bar">
-        <div className="sc__badge-fill" style={{ width: `${pct}%` }} />
-      </div>
     </div>
   );
 }
