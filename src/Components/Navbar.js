@@ -4,12 +4,12 @@ import logo from '../images/logo.webp';
 import './Navbar.css';
 
 const SERVICE_LINKS = [
-  { to: '/pools',       label: 'المسابح',           icon: '🏊' },
-  { to: '/fountains',   label: 'النوافير',           icon: '⛲' },
-  { to: '/landscape',   label: 'اللاندسكيب',         icon: '🌿' },
-  { to: '/plants',      label: 'المزروعات والأواني', icon: '🪴' },
-  { to: '/magic',       label: 'ماجيك',              icon: '✨' },
-  { to: '/contracting', label: 'المقاولات العامة',   icon: '🏗️' },
+  { to: '/pools',       label: 'المسابح',           icon: '' },
+  { to: '/fountains',   label: 'النوافير',           icon: '' },
+  { to: '/landscape',   label: 'اللاندسكيب',         icon: '' },
+  { to: '/plants',      label: 'المزروعات والأواني', icon: '' },
+  { to: '/magic',       label: 'ماجيك',              icon: '' },
+  { to: '/contracting', label: 'المقاولات العامة',   icon: '' },
 ];
 
 function Navbar() {

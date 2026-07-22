@@ -17,7 +17,7 @@ import fountainsBack  from '../images/84.jpg';
 import landscapeBack  from '../images/72.jpg';
 import contractingBack from '../images/a1.jpeg';
 import plantsBack     from '../images/101.jpg';
-import magicBack      from '../images/img13.jpeg';
+import magicBack      from '../images/img14.jpeg';
 
 import bgHero1 from '../images/W.jpg';
 import bgHero2 from '../images/84.jpg';
