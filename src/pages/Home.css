@@ -359,54 +359,65 @@
   z-index: 1;
 }
 
-/* ── Arc Badge ── */
-.sc__arc-badge {
+/* ── Count Badge ── */
+.sc__badge {
   position: absolute;
   top: 14px;
   left: 14px;
   z-index: 3;
-  width: 64px;
-  height: 64px;
-  transition: transform 0.35s ease;
-}
-.sc-face--front:hover .sc__arc-badge {
-  transform: scale(1.1);
-}
-
-.sc__arc-svg {
-  position: absolute;
-  inset: 0;
-  filter: drop-shadow(0 0 8px rgba(167,243,208,0.4));
-}
-
-/* الدايرة الخضرا بتتحرك بسلاسة عبر JS مش CSS */
-
-.sc__arc-inner {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  padding: 10px 14px 8px;
+  min-width: 64px;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.sc__arc-num {
-  font-size: 1.2rem;
+.sc-face--front:hover .sc__badge {
+  transform: scale(1.06);
+  background: rgba(0,0,0,0.65);
+}
+
+.sc__badge-num {
+  display: block;
+  font-size: 1.7rem;
   font-weight: 900;
-  color: #a7f3d0;
+  color: #fff;
   line-height: 1;
   font-variant-numeric: tabular-nums;
+  /* gradient أبيض لأخضر */
+  background: linear-gradient(135deg, #fff 40%, #a7f3d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.sc__arc-lbl {
-  font-size: 0.55rem;
+
+.sc__badge-lbl {
+  display: block;
+  font-size: 0.62rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.75);
-  margin-top: 2px;
-  text-align: center;
+  color: rgba(255,255,255,0.65);
+  margin-top: 3px;
+  margin-bottom: 7px;
+  letter-spacing: 0.03em;
+}
+
+/* bar */
+.sc__badge-bar {
+  height: 3px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.sc__badge-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #a7f3d0, #34d399);
+  border-radius: 3px;
+  transition: width 1.4s cubic-bezier(0.22,1,0.36,1);
 }
 
 /* ── Body ── */

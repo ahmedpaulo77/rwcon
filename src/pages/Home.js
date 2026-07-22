@@ -21,9 +21,9 @@ import magicBack      from '../images/img14.jpeg';
 
 import bgHero1 from '../images/W.jpg';
 import bgHero2 from '../images/84.jpg';
-import bgHero3 from '../images/hero.jpg';
-import bgHero4 from '../images/72.jpg';
-import bgHero5 from '../images/200.jpg';
+import bgHero3 from '../images/80.jpg';
+import bgHero4 from '../images/zzz.jpeg';
+import bgHero5 from '../images/hero.jpg';
 
 import './Home.css';
 
@@ -100,41 +100,17 @@ function useInView(threshold = 0.25) {
   return [ref, inView];
 }
 
-/* ─── Arc Progress Badge ─── */
-const RADIUS = 22;
-const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
-
+/* ─── Count Badge — رقم + bar ─── */
 function ArcBadge({ count, countMax, countLabel, active }) {
   const displayCount = useCountUp(count, 1500, active);
-  const progress = active ? displayCount / countMax : 0;
-  const offset = CIRCUMFERENCE * (1 - progress);
+  const pct = active ? Math.round((displayCount / countMax) * 100) : 0;
 
   return (
-    <div className="sc__arc-badge">
-      <svg className="sc__arc-svg" viewBox="0 0 56 56" width="64" height="64">
-        {/* track */}
-        <circle
-          cx="28" cy="28" r={RADIUS}
-          fill="none"
-          stroke="rgba(255,255,255,0.15)"
-          strokeWidth="3.5"
-        />
-        {/* progress arc */}
-        <circle
-          cx="28" cy="28" r={RADIUS}
-          fill="none"
-          stroke="#a7f3d0"
-          strokeWidth="3.5"
-          strokeLinecap="round"
-          strokeDasharray={CIRCUMFERENCE}
-          strokeDashoffset={offset}
-          transform="rotate(-90 28 28)"
-          style={{ transition: 'stroke-dashoffset 0.05s linear' }}
-        />
-      </svg>
-      <div className="sc__arc-inner">
-        <span className="sc__arc-num">{displayCount}</span>
-        <span className="sc__arc-lbl">{countLabel}</span>
+    <div className="sc__badge">
+      <span className="sc__badge-num">{displayCount}</span>
+      <span className="sc__badge-lbl">{countLabel}</span>
+      <div className="sc__badge-bar">
+        <div className="sc__badge-fill" style={{ width: `${pct}%` }} />
       </div>
     </div>
   );
