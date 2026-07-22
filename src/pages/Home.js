@@ -131,7 +131,6 @@ function ServiceCard({ to, img, backImg, backTitle, title, desc, theme, count, c
         <Link to={to} className="sc-face sc-face--front">
           <div className="sc__zoom" style={{ backgroundImage: `url(${img})` }} />
           <div className="sc__overlay" />
-          <ArcBadge count={count} countMax={countMax} countLabel={countLabel} active={inView} />
           <div className="sc__body">
             <h3>{title}</h3>
             <p>{desc}</p>
