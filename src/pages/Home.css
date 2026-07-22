@@ -278,6 +278,14 @@
   grid-template-columns: 1fr;
 }
 
+/* الـ wrapper لازم يملأ الـ grid cell */
+.services-bento > .sc-wrap {
+  height: 100%;
+}
+.services-bento > .sc-wrap .sc-inner {
+  height: 100%;
+}
+
 @media (min-width: 600px) {
   .services-bento {
     grid-template-columns: repeat(2, 1fr);
@@ -295,16 +303,16 @@
     grid-column: span 2;
     grid-row: 1;
   }
+  .services-bento > *:nth-child(1) .sc-inner {
+    min-height: 320px;
+  }
   .services-bento > *:nth-child(2) {
     grid-column: 3;
     grid-row: 1;
   }
   .services-bento > *:nth-child(3) {
     grid-column: 3;
-    /* سيحتل صف 2 تلقائياً — لكن نجعله في نفس صف العمود 3 */
   }
-
-  /* صف 2: آخر كارت يمتد عمودين */
   .services-bento > *:nth-child(4) {
     grid-column: 1;
     grid-row: 2;
@@ -319,32 +327,12 @@
   }
 }
 
-/* ── Service Card ── */
+/* ── Service Card (faces shared styles) ── */
 .sc {
   position: relative;
-  border-radius: 20px;
   overflow: hidden;
   text-decoration: none;
   color: #fff;
-  min-height: 260px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.6rem;
-  cursor: pointer;
-
-  /* Scroll reveal: ابدأ مخفي */
-  opacity: 0;
-  transform: translateY(40px);
-  transition:
-    opacity 0.65s ease calc(var(--delay, 0ms)),
-    transform 0.65s cubic-bezier(0.22,1,0.36,1) calc(var(--delay, 0ms)),
-    box-shadow 0.35s ease;
-}
-
-.sc--visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* zoom layer — صورة الخلفية تتكبر on hover */
@@ -356,7 +344,7 @@
   transition: transform 0.7s cubic-bezier(0.22,1,0.36,1);
   z-index: 0;
 }
-.sc:hover .sc__zoom { transform: scale(1.08); }
+.sc-face--front:hover .sc__zoom { transform: scale(1.08); }
 
 /* overlay */
 .sc__overlay {
@@ -369,20 +357,6 @@
     rgba(0,0,0,0.1)  100%
   );
   z-index: 1;
-  transition: background 0.4s;
-}
-.sc:hover .sc__overlay {
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.92) 0%,
-    rgba(0,0,0,0.55) 60%,
-    rgba(0,0,0,0.15) 100%
-  );
-}
-
-/* hover lift */
-.sc:hover {
-  box-shadow: 0 24px 56px rgba(0,0,0,0.35);
 }
 
 /* ── Arc Badge ── */
@@ -395,7 +369,7 @@
   height: 64px;
   transition: transform 0.35s ease;
 }
-.sc:hover .sc__arc-badge {
+.sc-face--front:hover .sc__arc-badge {
   transform: scale(1.1);
 }
 
@@ -465,7 +439,7 @@
   display: inline-block;
   transition: transform 0.3s ease;
 }
-.sc:hover .sc__arrow { transform: translateX(-5px); }
+.sc-face--front:hover .sc__arrow { transform: translateX(-5px); }
 
 /* Mobile card height */
 @media (max-width: 599px) {
@@ -474,49 +448,303 @@
 
 
 /* ══════════════════════════════════════════
-   TRUST BAR
+   FLIP CARDS
 ══════════════════════════════════════════ */
-.home-trust {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  max-width: 1180px;
-  margin: 0 auto 0;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow);
+
+/* wrapper — هو اللي بيتحرك في الـ scroll reveal */
+.sc-wrap {
+  border-radius: 20px;
+  min-height: 260px;
+  perspective: 1000px;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.65s ease calc(var(--delay, 0ms)),
+    transform 0.65s cubic-bezier(0.22,1,0.36,1) calc(var(--delay, 0ms));
 }
 
-.home-trust__item {
-  background: var(--white);
-  padding: 1.75rem 0.75rem;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+.sc-wrap.sc--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
+
+/* inner — ده اللي بيتقلب */
+.sc-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  border-radius: 20px;
+}
+
+.sc-inner--flipped {
+  transform: rotateY(180deg);
+}
+
+/* وجه مشترك */
+.sc-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.6rem;
+}
+
+/* ── Front ── */
+.sc-face--front {
+  /* الوجه الأمامي — ظاهر */
+}
+
+/* ── Back ── */
+.sc-face--back {
+  transform: rotateY(180deg);
+}
+
+.sc__overlay--dark {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.92) 0%,
+    rgba(0,0,0,0.6)  50%,
+    rgba(0,0,0,0.2)  100%
+  ) !important;
+}
+
+.sc__back-body {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: right;
+}
+
+.sc__back-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #a7f3d0;
+  background: rgba(167,243,208,0.12);
+  border: 1px solid rgba(167,243,208,0.3);
+  border-radius: 50px;
+  padding: 0.3rem 0.85rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.sc__back-body h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 1.1rem;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.sc__back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #a7f3d0;
+  color: #0a2e1a;
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.sc__back-btn:hover {
+  background: #6ee7b7;
+  transform: translateX(-3px);
+}
+
+/* mobile — disable flip on touch */
+@media (hover: none) {
+  .sc-inner { transform: none !important; }
+}
+
+@media (max-width: 599px) {
+  .sc-wrap { min-height: 230px; }
+  .sc-inner { min-height: 230px; }
+}
+
+/* ══════════════════════════════════════════
+   TRUST SECTION  — floating cards
+══════════════════════════════════════════ */
+.home-trust {
+  position: relative;
+  padding: 5rem 1.25rem;
+  overflow: hidden;
+  background: #0a1f14;
+}
+
+/* خلفية ضبابية */
+.home-trust::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(27,67,50,0.7), transparent),
+    radial-gradient(ellipse 60% 80% at 80% 30%, rgba(201,162,39,0.08), transparent);
+  z-index: 0;
+}
+
+/* خطوط زخرفية */
+.home-trust::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 0;
+}
+
+.home-trust__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* label فوق الـ cards */
+.home-trust__section-label {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.home-trust__section-label span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #a7f3d0;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* ── كل card ── */
+.home-trust__item {
+  position: relative;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+  cursor: default;
+
+  /* entry animation */
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22,1,0.36,1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.home-trust__item:nth-child(2) { transition-delay: 0.12s; }
+.home-trust__item:nth-child(3) { transition-delay: 0.24s; }
 
 .trust--visible {
   opacity: 1 !important;
-  transform: translateY(0) !important;
+  transform: translateY(0) scale(1) !important;
 }
 
-.home-trust__item strong {
+.home-trust__item:hover {
+  border-color: rgba(167,243,208,0.3);
+  box-shadow: 0 0 40px rgba(167,243,208,0.08), 0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* corner glow */
+.home-trust__item::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(167,243,208,0.12), transparent 70%);
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+.home-trust__item:hover::before { opacity: 1; }
+
+/* الرقم الضخم */
+.home-trust__num {
   display: block;
-  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-size: clamp(3rem, 7vw, 5rem);
   font-weight: 900;
-  color: var(--accent-dark);
-  margin-bottom: 0.3rem;
+  line-height: 1;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.6rem;
+  /* gradient على الحرف */
+  background: linear-gradient(135deg, #fff 30%, #a7f3d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.home-trust__item span {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  font-weight: 600;
+/* خط بيتمدد من الوسط */
+.home-trust__line {
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #a7f3d0, transparent);
+  width: 0%;
+  margin: 0 auto 1rem;
+  border-radius: 2px;
+  transition: width 1.2s cubic-bezier(0.22,1,0.36,1) 0.3s;
+}
+.trust--visible .home-trust__line {
+  width: 60%;
 }
 
-@media (max-width: 480px) {
-  .home-trust__item { padding: 1.25rem 0.5rem; }
-  .home-trust__item span { font-size: 0.72rem; }
+/* الاسم */
+.home-trust__label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 0.4rem;
+}
+
+/* الوصف الصغير */
+.home-trust__sub {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .home-trust__inner {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 380px;
+  }
+  .home-trust__item:nth-child(2),
+  .home-trust__item:nth-child(3) { transition-delay: 0s; }
+}
+
+@media (min-width: 701px) and (max-width: 960px) {
+  .home-trust__inner {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
 }

@@ -11,6 +11,14 @@ import plantsImg     from '../images/150.jpg';
 import magicImg      from '../images/img13.jpeg';
 import contractingImg from '../images/c4.jpeg';
 
+// صور الـ back side للـ flip cards
+import poolsBack      from '../images/76.jpg';
+import fountainsBack  from '../images/84.jpg';
+import landscapeBack  from '../images/72.jpg';
+import contractingBack from '../images/a1.jpeg';
+import plantsBack     from '../images/101.jpg';
+import magicBack      from '../images/img13.jpeg';
+
 import bgHero1 from '../images/W.jpg';
 import bgHero2 from '../images/84.jpg';
 import bgHero3 from '../images/hero.jpg';
@@ -51,12 +59,12 @@ const HERO_SLIDES = [
 ];
 
 const SERVICES = [
-  { to: '/pools',       img: poolsImg,       title: 'المسابح',           desc: 'تصميم وتنفيذ حمامات السباحة باحترافية عالية',                 theme: 'pools',       count: 7,  countMax: 10, countLabel: 'مشروع' },
-  { to: '/fountains',   img: fountainsImg,   title: 'النوافير',           desc: 'نوافير وأعمال مائية فريدة ومبتكرة',                          theme: 'fountains',   count: 2,  countMax: 10, countLabel: 'مشروع' },
-  { to: '/landscape',   img: landscapeImg,   title: 'اللاندسكيب',         desc: 'تنسيق المساحات الخضراء والحدائق',                            theme: 'landscape',   count: 7,  countMax: 10, countLabel: 'مشروع' },
-  { to: '/contracting', img: contractingImg, title: 'المقاولات العامة',   desc: 'أعمال التشييد، الهياكل الإنشائية، وتطوير البنية التحتية',    theme: 'contracting', count: 6,  countMax: 10, countLabel: 'مشروع' },
-  { to: '/plants',      img: plantsImg,      title: 'المزروعات والأواني', desc: 'نباتات طبيعية وأواني عصرية بأسعار مناسبة',                   theme: 'plants',      count: 53, countMax: 60, countLabel: 'منتج'  },
-  { to: '/magic',       img: magicImg,       title: 'ماجيك',              desc: 'نباتات عائمة مغناطيسية ديكور فريد',                          theme: 'magic',       count: 3,  countMax: 10, countLabel: 'منتج'  },
+  { to: '/pools',       img: poolsImg,       backImg: poolsBack,       backTitle: 'مسبح هوليداي إن تبوك',         title: 'المسابح',           desc: 'تصميم وتنفيذ حمامات السباحة باحترافية عالية',                 theme: 'pools',       count: 7,  countMax: 10, countLabel: 'مشروع' },
+  { to: '/fountains',   img: fountainsImg,   backImg: fountainsBack,   backTitle: 'نافورة فندق هوليداي إن',        title: 'النوافير',           desc: 'نوافير وأعمال مائية فريدة ومبتكرة',                          theme: 'fountains',   count: 2,  countMax: 10, countLabel: 'مشروع' },
+  { to: '/landscape',   img: landscapeImg,   backImg: landscapeBack,   backTitle: 'لاندسكيب مشروع NHC',            title: 'اللاندسكيب',         desc: 'تنسيق المساحات الخضراء والحدائق',                            theme: 'landscape',   count: 7,  countMax: 10, countLabel: 'مشروع' },
+  { to: '/contracting', img: contractingImg, backImg: contractingBack, backTitle: 'تشطيب ساحة فندق هوليداي إن',   title: 'المقاولات العامة',   desc: 'أعمال التشييد، الهياكل الإنشائية، وتطوير البنية التحتية',    theme: 'contracting', count: 6,  countMax: 10, countLabel: 'مشروع' },
+  { to: '/plants',      img: plantsImg,      backImg: plantsBack,      backTitle: 'توريد نباتات فندق هوليداي إن', title: 'المزروعات والأواني', desc: 'نباتات طبيعية وأواني عصرية بأسعار مناسبة',                   theme: 'plants',      count: 53, countMax: 60, countLabel: 'منتج'  },
+  { to: '/magic',       img: magicImg,       backImg: magicBack,       backTitle: 'أصيص دوار مغناطيسي',           title: 'ماجيك',              desc: 'نباتات عائمة مغناطيسية ديكور فريد',                          theme: 'magic',       count: 3,  countMax: 10, countLabel: 'منتج'  },
 ];
 
 /* ─── Hook: عداد متحرك ─── */
@@ -132,42 +140,61 @@ function ArcBadge({ count, countMax, countLabel, active }) {
   );
 }
 
-/* ─── كارت الخدمة ─── */
-function ServiceCard({ to, img, title, desc, theme, count, countMax, countLabel, delay = 0 }) {
+/* ─── كارت الخدمة (Flip) ─── */
+function ServiceCard({ to, img, backImg, backTitle, title, desc, theme, count, countMax, countLabel, delay = 0 }) {
   const [cardRef, inView] = useInView(0.2);
+  const [flipped, setFlipped] = useState(false);
 
   return (
-    <Link
+    <div
       ref={cardRef}
-      to={to}
-      className={`sc sc--${theme} ${inView ? 'sc--visible' : ''}`}
+      className={`sc-wrap sc--${theme} ${inView ? 'sc--visible' : ''}`}
       style={{ '--delay': `${delay}ms` }}
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
     >
-      {/* zoom layer */}
-      <div className="sc__zoom" style={{ backgroundImage: `url(${img})` }} />
-      <div className="sc__overlay" />
+      <div className={`sc-inner ${flipped ? 'sc-inner--flipped' : ''}`}>
 
-      {/* arc badge */}
-      <ArcBadge count={count} countMax={countMax} countLabel={countLabel} active={inView} />
+        {/* ── FRONT ── */}
+        <div className="sc-face sc-face--front">
+          <div className="sc__zoom" style={{ backgroundImage: `url(${img})` }} />
+          <div className="sc__overlay" />
+          <ArcBadge count={count} countMax={countMax} countLabel={countLabel} active={inView} />
+          <div className="sc__body">
+            <h3>{title}</h3>
+            <p>{desc}</p>
+            <span className="sc__cta">اكتشف المزيد <span className="sc__arrow">←</span></span>
+          </div>
+        </div>
 
-      {/* content */}
-      <div className="sc__body">
-        <h3>{title}</h3>
-        <p>{desc}</p>
-        <span className="sc__cta">اكتشف المزيد <span className="sc__arrow">←</span></span>
+        {/* ── BACK ── */}
+        <div className="sc-face sc-face--back">
+          <div className="sc__zoom" style={{ backgroundImage: `url(${backImg})` }} />
+          <div className="sc__overlay sc__overlay--dark" />
+          <div className="sc__back-body">
+            <span className="sc__back-tag">من أعمالنا</span>
+            <h3>{backTitle}</h3>
+            <Link to={to} className="sc__back-btn">شاهد المشروع ←</Link>
+          </div>
+        </div>
+
       </div>
-    </Link>
+    </div>
   );
 }
 
 /* ─── Trust Item مع counter ─── */
-function TrustItem({ value, label, isNumber = false }) {
-  const [ref, inView] = useInView(0.4);
-  const num = useCountUp(isNumber ? parseInt(value) : 0, 1600, isNumber && inView);
+function TrustItem({ value, suffix = '', label, sub, isNumber = false }) {
+  const [ref, inView] = useInView(0.35);
+  const num = useCountUp(isNumber ? parseInt(value) : 0, 1800, isNumber && inView);
   return (
     <div ref={ref} className={`home-trust__item ${inView ? 'trust--visible' : ''}`}>
-      <strong>{isNumber ? `+${num}` : value}</strong>
-      <span>{label}</span>
+      <strong className="home-trust__num">
+        {isNumber ? `${num}${suffix}` : value}
+      </strong>
+      <span className="home-trust__line" />
+      <span className="home-trust__label">{label}</span>
+      {sub && <span className="home-trust__sub">{sub}</span>}
     </div>
   );
 }
@@ -281,9 +308,14 @@ function Home() {
 
       {/* ══════════ TRUST BAR ══════════ */}
       <section className="home-trust">
-        <TrustItem value="50"   label="مشروع منفّذ"        isNumber />
-        <TrustItem value="6"    label="مجالات خدمة"         isNumber />
-        <TrustItem value="تبوك" label="وكل أنحاء المملكة"  isNumber={false} />
+        <div className="home-trust__section-label">
+          <span>أرقامنا تتحدث عنّا</span>
+        </div>
+        <div className="home-trust__inner">
+          <TrustItem value="50" suffix="+"  label="مشروع منفّذ"        sub="في مختلف أنحاء المملكة"    isNumber />
+          <TrustItem value="6"  suffix=""   label="مجالات خدمة"         sub="تشمل كل احتياجاتك"          isNumber />
+          <TrustItem value="تبوك" suffix="" label="مقرّنا الرئيسي"      sub="ونخدم كامل المملكة"          isNumber={false} />
+        </div>
       </section>
 
       <Footer />

@@ -15,6 +15,7 @@ const SERVICE_LINKS = [
 function Footer() {
   return (
     <footer className="footer">
+      <div className="footer-topline" />
       <div className="footer-top">
         <div className="footer-content">
           <div className="footer-brand">
@@ -71,7 +72,9 @@ function Footer() {
         </div>
       </div>
 
-      {/* ⬇️ الجزء المطور الخاص بأرقام التوثيق الحكومية ⬇️ */}
+      <div className="footer-divider" />
+
+      {/* أرقام التوثيق الحكومية */}
       <div className="footer-credentials">
         <div className="credential-item">
           <span className="credential-label">السجل التجاري:</span>
