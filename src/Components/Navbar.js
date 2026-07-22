@@ -3,19 +3,18 @@ import { useState, useEffect } from 'react';
 import logo from '../images/logo.webp';
 import './Navbar.css';
 
-// ✅ تم إضافة "المقاولات العامة" هنا لتظهر في القائمة المنسدلة تلقائياً
 const SERVICE_LINKS = [
-  { to: '/pools', label: 'المسابح' },
-  { to: '/fountains', label: 'النوافير' },
-  { to: '/landscape', label: 'اللاندسكيب' },
-  { to: '/plants', label: 'المزروعات والأواني' },
-  { to: '/magic', label: 'ماجيك' },
-  { to: '/contracting', label: 'المقاولات العامة' }, 
+  { to: '/pools',       label: 'المسابح',           icon: '🏊' },
+  { to: '/fountains',   label: 'النوافير',           icon: '⛲' },
+  { to: '/landscape',   label: 'اللاندسكيب',         icon: '🌿' },
+  { to: '/plants',      label: 'المزروعات والأواني', icon: '🪴' },
+  { to: '/magic',       label: 'ماجيك',              icon: '✨' },
+  { to: '/contracting', label: 'المقاولات العامة',   icon: '🏗️' },
 ];
 
 function Navbar() {
   const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen]         = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
 
   useEffect(() => {
@@ -25,9 +24,7 @@ function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
+    return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
   const isActive = (path) => location.pathname === path;
@@ -44,11 +41,9 @@ function Navbar() {
           className={`nav-toggle ${menuOpen ? 'is-open' : ''}`}
           aria-label={menuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
           aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((o) => !o)}
+          onClick={() => setMenuOpen(o => !o)}
         >
-          <span />
-          <span />
-          <span />
+          <span /><span /><span />
         </button>
 
         <div className={`nav-panel ${menuOpen ? 'open' : ''}`}>
@@ -61,50 +56,38 @@ function Navbar() {
               <button
                 type="button"
                 className={`nav-dropdown-btn ${servicesOpen ? 'open' : ''}`}
-                onClick={() => setServicesOpen((o) => !o)}
+                onClick={() => setServicesOpen(o => !o)}
                 aria-expanded={servicesOpen}
               >
                 خدماتنا
-                <span className="nav-chevron" aria-hidden>▾</span>
+                <span className="nav-chevron" aria-hidden>
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                    <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
               </button>
               <div className={`nav-dropdown-menu ${servicesOpen ? 'open' : ''}`}>
-                {SERVICE_LINKS.map(({ to, label }) => (
+                {SERVICE_LINKS.map(({ to, label, icon }) => (
                   <Link
                     key={to}
                     to={to}
                     className={isActive(to) ? 'active' : ''}
                     onClick={() => setMenuOpen(false)}
                   >
+                    <span className="nav-dd-icon">{icon}</span>
                     {label}
                   </Link>
                 ))}
               </div>
             </div>
 
-            <Link
-              to="/about"
-              className={isActive('/about') ? 'active' : ''}
-              onClick={() => setMenuOpen(false)}
-            >
-              من نحن
-            </Link>
-            <Link
-              to="/contact"
-              className={`nav-cta ${isActive('/contact') ? 'active' : ''}`}
-              onClick={() => setMenuOpen(false)}
-            >
-              تواصل معنا
-            </Link>
+            <Link to="/about"   className={isActive('/about')   ? 'active' : ''} onClick={() => setMenuOpen(false)}>من نحن</Link>
+            <Link to="/contact" className={`nav-cta ${isActive('/contact') ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>تواصل معنا</Link>
           </div>
         </div>
 
         {menuOpen && (
-          <button
-            type="button"
-            className="nav-overlay"
-            aria-label="إغلاق القائمة"
-            onClick={() => setMenuOpen(false)}
-          />
+          <button type="button" className="nav-overlay" aria-label="إغلاق القائمة" onClick={() => setMenuOpen(false)} />
         )}
       </nav>
     </header>

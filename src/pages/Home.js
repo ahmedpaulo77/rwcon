@@ -155,8 +155,8 @@ function ServiceCard({ to, img, backImg, backTitle, title, desc, theme, count, c
     >
       <div className={`sc-inner ${flipped ? 'sc-inner--flipped' : ''}`}>
 
-        {/* ── FRONT ── */}
-        <div className="sc-face sc-face--front">
+        {/* ── FRONT — كاملة Link ── */}
+        <Link to={to} className="sc-face sc-face--front">
           <div className="sc__zoom" style={{ backgroundImage: `url(${img})` }} />
           <div className="sc__overlay" />
           <ArcBadge count={count} countMax={countMax} countLabel={countLabel} active={inView} />
@@ -165,7 +165,7 @@ function ServiceCard({ to, img, backImg, backTitle, title, desc, theme, count, c
             <p>{desc}</p>
             <span className="sc__cta">اكتشف المزيد <span className="sc__arrow">←</span></span>
           </div>
-        </div>
+        </Link>
 
         {/* ── BACK ── */}
         <div className="sc-face sc-face--back">

@@ -31,7 +31,6 @@
   object-fit: contain;
 }
 
-/* زرار الهامبرغر الافتراضي */
 .nav-toggle {
   display: flex;
   flex-direction: column;
@@ -56,7 +55,6 @@
   transition: transform 0.25s, opacity 0.25s;
 }
 
-/* شكل الـ X لما المنيو تفتح */
 .nav-toggle.is-open span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
@@ -67,7 +65,6 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* الأوفرلاي الشفاف اللي ورا الدرج */
 .nav-overlay {
   display: none;
 }
@@ -111,10 +108,10 @@
 }
 
 .nav-chevron {
-  font-size: 0.7rem;
-  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  transition: transform 0.25s ease;
 }
-
 .nav-dropdown-btn.open .nav-chevron {
   transform: rotate(180deg);
 }
@@ -136,7 +133,7 @@
   color: #ffffff !important;
 }
 
-/* شاشات اللاب توب والكمبيوتر المضمونة ستايلها ثابت ومستحيل يتأثر */
+/* ==================== 2. Desktop ==================== */
 @media (min-width: 900px) {
   .navbar {
     padding: 0 2.5rem;
@@ -172,69 +169,78 @@
   .nav-dropdown-menu {
     display: block;
     position: absolute;
-    top: calc(100% + 0.5rem);
+    top: calc(100% + 0.75rem);
     right: 0;
     min-width: 220px;
     background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.06);
     border: 1px solid #e2e8f0;
-    padding: 0.5rem 0;
+    padding: 0.5rem;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-6px);
-    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    transform: translateY(-8px) scale(0.97);
+    transform-origin: top right;
+    transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.22,1,0.36,1), visibility 0.22s;
   }
 
   .nav-dropdown:hover .nav-dropdown-menu,
   .nav-dropdown-menu.open {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 
   .nav-dropdown-menu a {
-    display: block;
-    padding: 0.7rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 0.9rem;
     font-size: 0.9rem;
     font-weight: 600;
+    color: #1a202c;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
   }
 
-  .nav-dropdown-menu a:hover {
-    background: #f1f8e9;
-    color: #2e7d32;
+  .nav-dropdown-menu a:hover,
+  .nav-dropdown-menu a.active {
+    background: #f0fdf4;
+    color: #166534;
+  }
+
+  .nav-dd-icon {
+    font-size: 1rem;
+    line-height: 1;
   }
 }
 
-/* ==================== 2. ستايل درج الموبايل الجانبي على طريقة مشتلي ==================== */
+/* ==================== 3. Mobile Drawer ==================== */
 @media (max-width: 899px) {
   .nav-toggle {
     display: flex;
   }
 
-  /* الدرج الجانبي الأبيض */
   .nav-panel {
     display: flex !important;
     flex-direction: column;
     position: fixed;
     top: 0;
-    right: -100%; /* مستخبي برا الشاشة على اليمين */
-    width: 280px; /* عرض الدرج زي مشتلي بالضبط */
+    right: -100%;
+    width: 280px;
     height: 100vh;
     background: #ffffff !important;
     box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
-    padding: 80px 1.5rem 2rem 1.5rem; /* مسافة من فوق عشان يهرب من الزرار */
+    padding: 80px 1.5rem 2rem 1.5rem;
     overflow-y: auto;
     z-index: 105;
-    transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* أنيميشن سلايد ناعم جداً */
+    transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* لما المنيو تفتح، الدرج يدخل جوة الشاشة */
   .nav-panel.open {
     right: 0;
   }
 
-  /* تعتيم وتغبيش باقي الشاشة خلف المنيو */
   .nav-overlay {
     display: block;
     position: fixed;
@@ -252,15 +258,14 @@
     width: 100%;
   }
 
-  /* ستايل الروابط المفرودة النظيفة */
   .nav-links > a,
   .nav-dropdown-btn {
     color: #1a202c !important;
     font-size: 1.1rem;
     font-weight: 600;
     padding: 0.9rem 0.5rem;
-    border-bottom: 1px solid #edf2f7; /* خط رمادي خفيف بيفصل اللينكات */
-    text-align: right; /* محاذاة لليمين متناسقة مع اللغة العربية */
+    border-bottom: 1px solid #edf2f7;
+    text-align: right;
     width: 100%;
   }
 
@@ -275,27 +280,27 @@
   }
 
   .nav-dropdown-btn {
-    justify-content: space-between; /* يخلي كلمة خدماتنا يمين والـ سهم شمال */
+    justify-content: space-between;
   }
 
-  /* قائمة الخدمات المنسدلة جوه الدرج */
   .nav-dropdown-menu.open {
     display: flex !important;
     flex-direction: column !important;
     gap: 0.25rem;
     padding: 0.5rem 1rem 0.5rem 0;
-    background: #f7fafc; /* خلفية رمادية خفيفة جداً لتمييز الخدمات */
+    background: #f7fafc;
     border-radius: 8px;
     margin-top: 0.25rem;
   }
 
   .nav-dropdown-menu a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.65rem 0.5rem;
     font-size: 1rem;
     color: #4a5568 !important;
     text-align: right;
-    border-bottom: none;
   }
 
   .nav-dropdown-menu a.active,
@@ -303,7 +308,6 @@
     color: #2e7d32 !important;
   }
 
-  /* زرار اتصل بنا في نهاية الدرج */
   .nav-cta {
     margin-top: 1.5rem;
     background: #2e7d32 !important;
@@ -313,7 +317,7 @@
     padding: 0.8rem 0 !important;
     font-size: 1.1rem !important;
   }
-  
+
   .nav-cta:hover {
     background: #1b5e20 !important;
   }

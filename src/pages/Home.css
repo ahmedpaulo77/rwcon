@@ -500,7 +500,9 @@
 
 /* ── Front ── */
 .sc-face--front {
-  /* الوجه الأمامي — ظاهر */
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 /* ── Back ── */
